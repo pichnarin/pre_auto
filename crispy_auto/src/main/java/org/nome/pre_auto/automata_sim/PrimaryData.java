@@ -1,4 +1,4 @@
-package org.nome.testting.withDb;
+package org.nome.pre_auto.automata_sim;
 
 
 import java.util.Set;
@@ -22,20 +22,18 @@ public class PrimaryData {
 
     public boolean isStringAccepted(String testString) {
         String currentState = startState;
-        for (String s : initial_string) {
-            for (char c : s.toCharArray()) {
-                boolean transitionFound = false;
-                for (String t : transition) {
-                    String[] parts = t.split("->");
-                    if (parts[0].trim().equals(currentState) && parts[1].trim().equals(String.valueOf(c))) {
-                        currentState = parts[2].trim();
-                        transitionFound = true;
-                        break;
-                    }
+        for (char c : testString.toCharArray()) {
+            boolean transitionFound = false;
+            for (String t : transition) {
+                String[] parts = t.split("->");
+                if (parts[0].trim().equals(currentState) && parts[1].trim().equals(String.valueOf(c))) {
+                    currentState = parts[2].trim();
+                    transitionFound = true;
+                    break;
                 }
-                if (!transitionFound) {
-                    return false;
-                }
+            }
+            if (!transitionFound) {
+                return false;
             }
         }
         return finalState.contains(currentState);

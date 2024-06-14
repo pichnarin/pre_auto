@@ -1,4 +1,4 @@
-package org.nome.testting.withDb;
+package org.nome.pre_auto.automata_sim;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -23,6 +23,7 @@ public class UserInputApplication extends Application {
     private TextArea transitionTextAreald;
     private TextField testStringField;
     private Label resultLabel;
+    private TextArea resultTextArea;
 
     @Override
     public void start(Stage primaryStage) {
@@ -47,13 +48,14 @@ public class UserInputApplication extends Application {
         testStringField = new TextField();
         testStringField.setPromptText("Enter string to test");
 
-        resultLabel = new Label();
+        resultTextArea = new TextArea();
+        resultTextArea.setPromptText("Results");
 
         Button submitButton = getButton();
 
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(stateField, alphabetField, startStateField, finalStateField,transitionTextAreald, testStringField, submitButton, resultLabel);
+        root.getChildren().addAll(stateField, alphabetField, startStateField, finalStateField,transitionTextAreald, testStringField, submitButton, resultTextArea);
 
         Scene scene = new Scene(root, 1000, 850);
         primaryStage.setScene(scene);
@@ -73,10 +75,13 @@ public class UserInputApplication extends Application {
             // You can now use these values in your application
             PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
-            // Test the input string
-            String testString = testStringField.getText();
-            boolean isAccepted = primaryData.isStringAccepted(testString);
-            resultLabel.setText(isAccepted ? "Accepted" : "Rejected");
+            // Test the input strings
+            String[] testStrings = testStringField.getText().split(",");
+            resultTextArea.clear(); // Clear previous results
+            for (String testString : testStrings) {
+                boolean isAccepted = primaryData.isStringAccepted(testString);
+                resultTextArea.appendText(testString + " is " + (isAccepted ? "Accepted" : "Rejected") + "\n");
+            }
         });
         return submitButton;
     }
