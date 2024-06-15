@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.nome.pre_auto.PrimaryData;
 
 import java.util.Arrays;
 import java.util.HashSet;

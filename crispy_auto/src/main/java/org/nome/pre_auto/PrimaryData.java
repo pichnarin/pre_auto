@@ -1,4 +1,4 @@
-package org.nome.pre_auto.automata_sim;
+package org.nome.pre_auto;
 
 
 import java.util.Set;
@@ -38,5 +38,38 @@ public class PrimaryData {
         }
         return finalState.contains(currentState);
     }
+
+    public String generateDotScript() {
+        StringBuilder dotScript = new StringBuilder("digraph G {\n");
+        dotScript.append("rankdir=LR;\n");
+        // Add states to the DOT script
+        for (String state : this.state) {
+            dotScript.append(state).append(" [shape=circle];\n");
+        }
+
+        // Mark the initial state
+        dotScript.append(this.startState).append(" [shape=circle, color=red];\n"); // color=red to highlight the initial state
+
+        // Mark the final states
+        for (String finalState : this.finalState) {
+            dotScript.append(finalState).append(" [shape=doublecircle, color=green];\n");
+        }
+
+        // Add transitions to the DOT script
+        for (String t : this.transition) {
+            String[] parts = t.split("->");
+            if (parts.length == 3) {
+                dotScript.append(parts[0].trim())
+                        .append(" -> ")
+                        .append(parts[2].trim())
+                        .append(" [ label = \"")
+                        .append(parts[1].trim())
+                        .append("\" ];\n");
+            }
+        }
+        dotScript.append("}");
+        return dotScript.toString();
     }
+
+}
 
