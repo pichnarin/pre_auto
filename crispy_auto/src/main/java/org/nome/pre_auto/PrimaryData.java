@@ -1,6 +1,9 @@
 package org.nome.pre_auto;
 
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Set;
 
 public class PrimaryData {
@@ -71,5 +74,15 @@ public class PrimaryData {
         return dotScript.toString();
     }
 
+    public void GenerateImage(String dotScript, String outputPath) throws IOException, InterruptedException {
+        Path tempDotFile = Files.createTempFile("graph", ".dot");
+        Files.writeString(tempDotFile, dotScript);
+        ProcessBuilder pb = new ProcessBuilder("dot", "-Tpng", "-o", outputPath, tempDotFile.toString());
+        Process process = pb.start();
+        int exitCode = process.waitFor();
+        if (exitCode != 0) {
+            throw new RuntimeException("Graphviz exited with error code " + exitCode);
+        }
+    }
 }
 

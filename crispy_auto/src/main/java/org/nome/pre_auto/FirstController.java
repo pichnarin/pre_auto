@@ -6,8 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import javax.swing.text.html.FormSubmitEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -46,7 +47,7 @@ public class FirstController {
     private Label TransitionLabel;
 
     @FXML
-    private Button printDfaBtn;
+    private Button resetBtn;
 
     @FXML
     private TextField txtAlphabet;
@@ -70,14 +71,18 @@ public class FirstController {
     private TextArea txtTransition;
 
     @FXML
+    private ImageView dfaImageView;
+
+    @FXML
     private void initialize() {
         initializeSubmitDfaBtn();
-        initializeGenerateDfaBtn();
+        initializeResetButton();
     }
 
-    private void initializeGenerateDfaBtn() {
-        printDfaBtn.setOnAction(event -> {
-
+    private void initializeResetButton() {
+        resetBtn.setOnAction(event -> {
+            txtStrAR.clear();
+            dfaImageView.setImage(null);
         });
     }
 
@@ -92,6 +97,19 @@ public class FirstController {
             Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
             // You can now use these values in your application
             PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
+
+            String outputPath = "dfa.png";
+            String dotScript = primaryData.generateDotScript();
+            try {
+                primaryData.GenerateImage(dotScript, outputPath);
+                Image image = new Image(new FileInputStream(outputPath));
+                dfaImageView.setFitWidth(500);
+                dfaImageView.setFitHeight(300);
+                dfaImageView.setPreserveRatio(true);
+                dfaImageView.setImage(image);
+            } catch (IOException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
 
             // Test the input strings
             String[] testStrings = txtString.getText().split(",");

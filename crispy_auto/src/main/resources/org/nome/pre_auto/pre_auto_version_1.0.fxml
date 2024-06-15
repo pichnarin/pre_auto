@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -103,7 +104,7 @@
          </rowConstraints>
          <children>
             <Button id="FunctionButton" fx:id="SubmitDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" styleClass="FunctionButton" text="Submit" />
-            <Button id="FunctionButton" fx:id="printDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" styleClass="FunctionButton" text="Generate DFA" GridPane.columnIndex="1" />
+            <Button id="FunctionButton" fx:id="resetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" styleClass="FunctionButton" text="Reset" GridPane.columnIndex="1" />
             <Button id="FunctionButton" fx:id="ConstructNfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="113.0" styleClass="FunctionButton" text="Construct NFA" GridPane.columnIndex="2" />
             <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" styleClass="FunctionButton" text="Minimize DFA" GridPane.columnIndex="3" />
          </children>
@@ -142,5 +143,16 @@
           </Menu>
         </menus>
       </MenuBar>
+      <GridPane layoutX="639.0" layoutY="163.0" prefHeight="297.0" prefWidth="508.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="dfaImageView" fitHeight="297.0" fitWidth="509.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
