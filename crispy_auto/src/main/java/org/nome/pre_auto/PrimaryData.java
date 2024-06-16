@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.Set;
 
 public class PrimaryData {
-        private Set<String> state;
+        private final Set<String> state;
         private Set<String> alphabet;
         private String startState;
         private Set<String> finalState;

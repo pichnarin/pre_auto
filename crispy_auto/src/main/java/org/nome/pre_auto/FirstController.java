@@ -71,7 +71,7 @@ public class FirstController {
     private TextArea txtTransition;
 
     @FXML
-    private ImageView dfaImageView;
+    private ImageView faImageView;
 
     @FXML
     private void initialize() {
@@ -80,14 +80,14 @@ public class FirstController {
     }
 
     private void initializeResetButton() {
-        resetBtn.setOnAction(event -> {
+        resetBtn.setOnAction(_ -> {
             txtStrAR.clear();
-            dfaImageView.setImage(null);
+            faImageView.setImage(null);
         });
     }
 
     private void initializeSubmitDfaBtn() {
-        SubmitDfaBtn.setOnAction(event -> {
+        SubmitDfaBtn.setOnAction(_ -> {
             // Handle the user's input here
             Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
             Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
@@ -103,10 +103,10 @@ public class FirstController {
             try {
                 primaryData.GenerateImage(dotScript, outputPath);
                 Image image = new Image(new FileInputStream(outputPath));
-                dfaImageView.setFitWidth(500);
-                dfaImageView.setFitHeight(300);
-                dfaImageView.setPreserveRatio(true);
-                dfaImageView.setImage(image);
+                faImageView.setFitWidth(500);
+                faImageView.setFitHeight(300);
+                faImageView.setPreserveRatio(true);
+                faImageView.setImage(image);
             } catch (IOException | InterruptedException e) {
                 throw new RuntimeException(e);
             }
