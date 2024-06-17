@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController">
+   <children>
+      <Line endX="125.2603759765625" endY="68.73092651367188" layoutX="639.0" layoutY="259.0" startX="-263.8000183105469" startY="155.41421508789062" />
+      <Line endX="129.632568359375" endY="120.73095703125" layoutX="649.0" layoutY="260.0" startX="-225.56744384765625" startY="146.121337890625" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="30.0" layoutX="444.0" layoutY="330.0" stroke="#860202" strokeType="INSIDE" style="-fx-background-radius: 0; -fx-background-color: white;" width="81.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="30.0" layoutX="477.0" layoutY="336.0" stroke="#860202" strokeType="INSIDE" style="-fx-background-radius: 0;" width="81.0" />
+      <Button layoutX="447.0" layoutY="333.0" onAction="#onHelloButtonClick" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: white; -fx-border-color: #860202; -fx-background-radius: 0;" text="Start">
+         <font>
+            <Font name="CADT Mono Display Regular" size="14.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" proportional="false" startX="0.8910984414996522" startY="0.5303030122410167">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.1247563362121582" green="0.2985835075378418" blue="0.6736842393875122" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.04210526496171951" blue="0.31578946113586426" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#06045b" height="343.0" layoutX="61.0" layoutY="-147.0" rotate="-117.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="77.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="269.0" layoutX="60.0" layoutY="-134.0" rotate="-110.1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="77.0">
+         <fill>
+            <LinearGradient endX="0.022727288079984254" endY="0.7954545373266393">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4157504737377167" green="0.6849824786186218" blue="0.9052631855010986" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Polyline layoutX="172.0" layoutY="203.0" points="-102.50003051757812, 4.3826904296875, 322.15350341796875, -40.61729431152344, 322.15350341796875, 42.58270263671875, -102.00003051757812, 84.98272705078125" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0">
+         <fill>
+            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.9204545400359414" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.21052631735801697" green="0.38947367668151855" blue="0.5263158082962036" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Polyline>
+      <Polyline fill="#038410" layoutX="160.0" layoutY="153.0" points="-3.0517578125E-5, -11.017288208007812, -3.0517578125E-5, -11.017288208007812, -3.0517578125E-5, 47.98272705078125, -90.50003051757812, 54.3826904296875" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polyline fill="#03b115" layoutX="261.0" layoutY="145.0" points="-102.00003051757812, -2.6172943115234375, -74.84652709960938, 9.182723999023438, -74.84652709960938, 66.78271484375, -102.00003051757812, 54.98272705078125" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Polyline fill="#03e719" layoutX="322.0" layoutY="166.0" points="-136.34652709960938, -11.217269897460938, 143.35348510742188, -40.61729431152344, 143.35348510742188, 14.58270263671875, -136.34652709960938, 45.28271484375" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label layoutX="194.0" layoutY="131.0" prefHeight="70.0" prefWidth="278.0" rotate="-6.0" text="AUTOMATA">
+         <font>
+            <Font name="Eras Bold ITC" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="192.0" prefHeight="70.0" prefWidth="455.0" rotate="-6.0" text="SIMULATIONS">
+         <font>
+            <Font name="Eras Bold ITC" size="58.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.9659090773625808" endY="0.04545450210571289" startX="0.973484891833681" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Polyline fill="RED" layoutX="474.0" layoutY="12.0" points="-185.44650268554688, 123.38272094726562, 34.9534912109375, 93.18270874023438, 32.75347900390625, 98.58271789550781, -185.44650268554688, 123.38272094726562" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polyline fill="RED" layoutX="484.0" layoutY="22.0" points="18.15350341796875, 188.38272094726562, 20.353515625, 87.78271484375, 24.9534912109375, 83.18270874023438, 18.15350341796875, 188.38272094726562" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polyline fill="RED" layoutX="66.0" layoutY="159.0" points="-51.35811233520508, 109.92053985595703, 31.49365997314453, 95.52275085449219, 36.34706497192383, 99.11868286132812, -51.3475456237793, 109.97623443603516" rotate="97.0" strokeType="INSIDE" strokeWidth="0.0" />
+      <Polyline fill="RED" layoutX="315.0" layoutY="188.0" points="-254.64651489257812, 111.18270874023438, 28.153472900390625, 78.58273315429688, 28.153472900390625, 78.58273315429688, -258.4465026855469, 118.15594482421875" strokeType="INSIDE" strokeWidth="0.0" />
+      <Line endX="40.63262939453125" endY="-90.86906433105469" layoutX="235.0" layoutY="67.0" startX="-260.16741943359375" startY="115.53094482421875" stroke="#030030" />
+      <Line endX="23.6331787109375" endY="-94.46906280517578" layoutX="244.0" layoutY="75.0" startX="-257.367431640625" startY="167.93093872070312" />
+   </children>
+</AnchorPane>
