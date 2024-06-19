@@ -8,6 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -74,6 +75,10 @@ public class FirstController {
     private ImageView faImageView;
 
     @FXML
+    private GridPane imageGridpane;
+
+
+    @FXML
     private void initialize() {
         initializeSubmitDfaBtn();
         initializeResetButton();
@@ -95,6 +100,20 @@ public class FirstController {
             Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
             Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
             Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
+
+           if(state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty()) {
+               txtStrAR.setText("Please fill all the fields");
+               return;
+           }else if(!state.contains(startState)) {
+               txtStrAR.setText("Start state must be one of the states");
+               return;
+           }else if(!state.containsAll(finalState)) {
+               txtStrAR.setText("Final state must be from the states");
+               return;
+           }else if(alphabet.contains("e")) {
+               txtStrAR.setText("Alphabet cannot contain epsilon");
+               return;
+           }
             // You can now use these values in your application
             PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
@@ -103,8 +122,6 @@ public class FirstController {
             try {
                 primaryData.GenerateImage(dotScript, outputPath);
                 Image image = new Image(new FileInputStream(outputPath));
-                faImageView.setFitWidth(500);
-                faImageView.setFitHeight(300);
                 faImageView.setPreserveRatio(true);
                 faImageView.setImage(image);
             } catch (IOException | InterruptedException e) {

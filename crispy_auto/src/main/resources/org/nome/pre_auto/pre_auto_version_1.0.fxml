@@ -155,7 +155,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <GridPane layoutX="575.0" layoutY="231.23479027904975" prefHeight="326.0" prefWidth="653.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="231.0">
+      <GridPane fx:id="imageGridPane" layoutX="575.0" layoutY="231.23479027904975" prefHeight="326.0" prefWidth="653.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="231.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
