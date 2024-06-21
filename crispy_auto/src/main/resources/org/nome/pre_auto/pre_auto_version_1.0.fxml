@@ -125,7 +125,7 @@
             </TextArea>
          </children>
       </GridPane>
-      <MenuBar fx:id="MenuBar" layoutY="1.0">
+      <MenuBar fx:id="MenuBar" layoutX="14.0" layoutY="1.0" AnchorPane.bottomAnchor="779.4521729992468" AnchorPane.leftAnchor="14.078211413780252" AnchorPane.rightAnchor="1365.7826045420309" AnchorPane.topAnchor="1.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
