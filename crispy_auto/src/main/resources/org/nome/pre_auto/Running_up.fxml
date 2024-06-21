@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.SwitchScene">
    <children>
       <Line endX="125.2603759765625" endY="68.73092651367188" layoutX="639.0" layoutY="259.0" startX="-263.8000183105469" startY="155.41421508789062" />
       <Line endX="129.632568359375" endY="120.73095703125" layoutX="649.0" layoutY="260.0" startX="-225.56744384765625" startY="146.121337890625" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="30.0" layoutX="444.0" layoutY="330.0" stroke="#860202" strokeType="INSIDE" style="-fx-background-radius: 0; -fx-background-color: white;" width="81.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="30.0" layoutX="477.0" layoutY="336.0" stroke="#860202" strokeType="INSIDE" style="-fx-background-radius: 0;" width="81.0" />
-      <Button layoutX="447.0" layoutY="333.0" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: white; -fx-border-color: #860202; -fx-background-radius: 0;" text="Start">
+      <Button fx:id="btnSwitch" layoutX="447.0" layoutY="333.0" onAction="#onBtnClick" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: white; -fx-border-color: #860202; -fx-background-radius: 0;" text="Start">
          <font>
             <Font name="CADT Mono Display Regular" size="14.0" />
          </font>
