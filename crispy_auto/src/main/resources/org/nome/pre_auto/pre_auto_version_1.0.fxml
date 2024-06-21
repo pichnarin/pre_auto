@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,93 +10,86 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1277.0" style="-fx-border-radius: 10; -fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1505.0" style="-fx-border-radius: 10; -fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
    <children>
-      <GridPane layoutX="14.0" layoutY="60.0" prefHeight="503.0" prefWidth="464.0" AnchorPane.topAnchor="60.0">
+      <GridPane alignment="CENTER_LEFT" layoutX="14.0" layoutY="58.0" prefHeight="472.0" prefWidth="356.0" AnchorPane.topAnchor="58.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.8695340421566" minWidth="3.339112551135827" prefWidth="15.026063234729577" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.1130794116998" minWidth="10.0" prefWidth="353.1130794116998" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="51.756520343052244" minHeight="10.0" prefHeight="51.756520343052244" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="58.40001426538136" minHeight="10.0" prefHeight="52.59130920525541" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="53.565190656982935" minHeight="10.0" prefHeight="53.565190656982935" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="51.24348141992931" minHeight="0.0" prefHeight="51.24348141992931" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="220.5043791097776" minHeight="10.0" prefHeight="207.35649153768924" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="60.713104248046875" minHeight="0.0" prefHeight="48.74786465102204" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.77392243412363" minHeight="10.0" prefHeight="59.10436027425906" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="60.93913499338196" minHeight="10.0" prefHeight="51.75651865160538" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="67.45216515351791" minHeight="0.0" prefHeight="60.10435462418043" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="220.5043791097776" minHeight="10.0" prefHeight="51.59131089670228" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="227.20868799797307" minHeight="0.0" prefHeight="197.00866855671836" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="61.7738944537158" minHeight="10.0" prefHeight="55.09568763199292" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label id="LabelBox" fx:id="FinalStateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="110.0" styleClass="LabelBox" text="Final state" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <TextField id="InputBox" fx:id="txtFinalState" prefHeight="42.0" prefWidth="354.0" promptText="Enter final state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <Label id="LabelBox" fx:id="TransitionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="110.0" styleClass="LabelBox" text="Transition" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <Label id="LabelBox" fx:id="StringLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="157.0" styleClass="LabelBox" text="String" GridPane.rowIndex="5">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <TextField id="InputBox" fx:id="txtString" prefHeight="53.0" prefWidth="354.0" promptText="Enter strings" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <Label id="LabelBox" fx:id="StateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="110.0" styleClass="LabelBox" text="State">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <TextField id="InputBox" fx:id="txtAlphabet" prefHeight="47.0" prefWidth="354.0" promptText="Enter alphabet" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <Label id="LabelBox" fx:id="AlphabetLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="110.0" styleClass="LabelBox" text="Alphabet" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <TextField id="InputBox" fx:id="txtStartState" prefHeight="44.0" prefWidth="354.0" promptText="Enter start state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <Label id="LabelBox" fx:id="StartStateLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="110.0" styleClass="LabelBox" text="Start state" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Elephant" size="11.0" />
-               </font>
-            </Label>
-            <TextField id="InputBox" fx:id="txtState" prefHeight="44.0" prefWidth="354.0" promptText="Enter state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextField>
-            <TextArea id="InputBox" fx:id="txtTransition" prefHeight="207.0" prefWidth="354.0" promptText="Enter transitions" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </TextArea>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <TextArea id="InputBox" fx:id="txtTransition" layoutY="5.0" prefHeight="183.0" prefWidth="354.0" promptText="Enter transitions" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TextField id="InputBox" fx:id="txtState" layoutY="3.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <TextField id="InputBox" fx:id="txtAlphabet" layoutY="-1.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter alphabet" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <TextField id="InputBox" fx:id="txtStartState" layoutY="3.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter start state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <TextField id="InputBox" fx:id="txtFinalState" prefHeight="52.0" prefWidth="354.0" promptText="Enter final state" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+               <children>
+                  <TextField id="InputBox" fx:id="txtString" layoutY="-4.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter strings" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
          </children>
       </GridPane>
-      <GridPane layoutX="63.0" layoutY="586.0" prefHeight="45.0" prefWidth="493.0">
+      <GridPane layoutX="453.0" layoutY="474.0" prefHeight="45.0" prefWidth="314.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.52175910473784" minWidth="10.0" prefWidth="109.6870033330504" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="10.0" prefWidth="97.8347824379358" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="10.0" prefWidth="146.2521637782079" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="10.0" prefWidth="137.904367320416" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.52175910473784" minWidth="10.0" prefWidth="97.94778422537746" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="90.98265478700242" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="105.17387312717841" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="115.5043268733757" minHeight="10.0" prefHeight="55.39998727376633" vgrow="SOMETIMES" />
@@ -107,21 +99,18 @@
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
-            <Button id="FunctionButton" fx:id="resetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Reset" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Elephant" size="11.686956405639648" />
-               </font></Button>
             <Button id="FunctionButton" fx:id="ConstructNfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="134.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Construct DFA" GridPane.columnIndex="2">
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
-            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Minimize DFA" GridPane.columnIndex="3">
+            <Button id="FunctionButton" fx:id="CheckFaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Chek FA" GridPane.columnIndex="1">
                <font>
-                  <Font name="Elephant" size="10.0" />
-               </font></Button>
+                  <Font name="Elephant" size="11.686956405639648" />
+               </font>
+            </Button>
          </children>
       </GridPane>
-      <GridPane layoutX="6.0" layoutY="658.0" prefHeight="176.0" prefWidth="1266.0">
+      <GridPane layoutX="5.0" layoutY="578.0" prefHeight="226.0" prefWidth="1492.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -129,7 +118,7 @@
           <RowConstraints maxHeight="422.7304873005341" minHeight="10.0" prefHeight="103.90435056690046" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea id="OutputBox" fx:id="txtStrAR" editable="false" prefHeight="285.0" prefWidth="1341.0" promptText="The results" styleClass="OutputBox">
+            <TextArea id="OutputBox" fx:id="txtStrAR" editable="false" prefHeight="285.0" prefWidth="1603.0" promptText="The results" style="-fx-background-color: white; -fx-border-radius: 5;" styleClass="OutputBox">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -155,7 +144,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <GridPane fx:id="imageGridPane" layoutX="575.0" layoutY="231.23479027904975" prefHeight="326.0" prefWidth="653.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="575.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="231.0">
+      <GridPane fx:id="imageGridPane" layoutX="842.0" layoutY="56.76521927427936" prefHeight="364.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="386.0" AnchorPane.leftAnchor="842.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="57.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -163,13 +152,55 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="faImageView" fitHeight="326.0" fitWidth="653.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <ImageView fx:id="faImageView" fitHeight="354.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </GridPane>
-      <Label id="LabelBox" fx:id="StateLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="846.0" layoutY="132.0" prefHeight="32.0" prefWidth="110.0" styleClass="LabelBox" text="Fa Diagram">
+      <GridPane layoutX="433.0" layoutY="57.0" prefHeight="255.0" prefWidth="354.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.7739164586784" minWidth="10.0" prefWidth="356.46087363807413" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="110.19130712152212" minHeight="10.0" prefHeight="55.930420857016784" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="194.5043700589216" minHeight="10.0" prefHeight="194.5043700589216" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition" style="-fx-background-color: white;" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextArea>
+            <TextField id="InputBox" fx:id="txtEpsilonS" prefHeight="52.0" prefWidth="354.0" promptText="Enter epsilon(e) symbol" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="InputBox">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </GridPane>
+      <TextArea fx:id="txtCheckFaResult" editable="false" layoutX="433.0" layoutY="343.0" prefHeight="59.0" prefWidth="356.0" promptText="Check FA" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="404.9652422022692" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="715.6609076677706" AnchorPane.topAnchor="343.0">
          <font>
-            <Font name="Elephant" size="11.0" />
+            <Font name="Arial" size="14.0" />
          </font>
-      </Label>
+      </TextArea>
+      <GridPane layoutX="1066.0" layoutY="481.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Minimize DFA">
+               <font>
+                  <Font name="Elephant" size="10.0" />
+               </font>
+            </Button>
+            <Button id="FunctionButton" fx:id="resetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="73.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Reset" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Elephant" size="11.686956405639648" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

@@ -77,6 +77,17 @@ public class FirstController {
     @FXML
     private GridPane imageGridpane;
 
+    @FXML
+    private TextArea txtEpsilonT;
+
+    @FXML
+    private TextField txtEpsilonS;
+
+    @FXML
+    private TextArea txtCheckFa;
+
+    @FXML
+    private Button CheckFaBtn;
 
     @FXML
     private void initialize() {
@@ -110,10 +121,8 @@ public class FirstController {
            }else if(!state.containsAll(finalState)) {
                txtStrAR.setText("Final state must be from the states");
                return;
-           }else if(alphabet.contains("e")) {
-               txtStrAR.setText("Alphabet cannot contain epsilon");
-               return;
            }
+
             // You can now use these values in your application
             PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
