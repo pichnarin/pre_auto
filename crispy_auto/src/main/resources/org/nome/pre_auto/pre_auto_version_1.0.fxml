@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -16,7 +18,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1505.0" style="-fx-border-radius: 10; -fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
    <children>
-      <GridPane alignment="CENTER_LEFT" layoutX="14.0" layoutY="58.0" prefHeight="472.0" prefWidth="356.0" AnchorPane.topAnchor="58.0">
+      <GridPane alignment="CENTER_LEFT" layoutX="14.0" layoutY="99.0" prefHeight="472.0" prefWidth="356.0" AnchorPane.topAnchor="99.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.1130794116998" minWidth="10.0" prefWidth="353.1130794116998" />
         </columnConstraints>
@@ -85,7 +87,7 @@
             </Pane>
          </children>
       </GridPane>
-      <GridPane layoutX="453.0" layoutY="474.0" prefHeight="45.0" prefWidth="314.0">
+      <GridPane layoutX="452.0" layoutY="516.0" prefHeight="45.0" prefWidth="314.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.52175910473784" minWidth="10.0" prefWidth="97.94778422537746" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="90.98265478700242" />
@@ -103,9 +105,9 @@
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
-            <Button id="FunctionButton" fx:id="CheckFaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="88.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Chek FA" GridPane.columnIndex="1">
+            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Minimize DFA" GridPane.columnIndex="1">
                <font>
-                  <Font name="Elephant" size="11.686956405639648" />
+                  <Font name="Elephant" size="10.0" />
                </font>
             </Button>
          </children>
@@ -144,7 +146,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <GridPane fx:id="imageGridPane" layoutX="842.0" layoutY="56.76521927427936" prefHeight="364.0" prefWidth="650.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="386.0" AnchorPane.leftAnchor="842.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="57.0">
+      <GridPane fx:id="imageGridPane" layoutX="841.0" layoutY="99.0" prefHeight="351.0" prefWidth="649.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="357.0" AnchorPane.leftAnchor="841.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="99.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -152,10 +154,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="faImageView" fitHeight="354.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="faImageView" fitHeight="327.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </GridPane>
-      <GridPane layoutX="433.0" layoutY="57.0" prefHeight="255.0" prefWidth="354.0">
+      <GridPane layoutX="433.0" layoutY="99.0" prefHeight="255.0" prefWidth="354.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.7739164586784" minWidth="10.0" prefWidth="356.46087363807413" />
         </columnConstraints>
@@ -164,7 +166,7 @@
           <RowConstraints maxHeight="194.5043700589216" minHeight="10.0" prefHeight="194.5043700589216" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition" style="-fx-background-color: white;" GridPane.rowIndex="1">
+            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition" style="-fx-background-color: white; -fx-border-radius: 5;" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -176,31 +178,31 @@
             </TextField>
          </children>
       </GridPane>
-      <TextArea fx:id="txtCheckFaResult" editable="false" layoutX="433.0" layoutY="343.0" prefHeight="59.0" prefWidth="356.0" promptText="Check FA" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="404.9652422022692" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="715.6609076677706" AnchorPane.topAnchor="343.0">
+      <TextArea fx:id="txtCheckFaResult" editable="false" layoutX="432.0" layoutY="391.0" prefHeight="59.0" prefWidth="356.0" promptText="Check FA" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="356.9652422022693" AnchorPane.leftAnchor="432.0" AnchorPane.rightAnchor="716.6609076677706" AnchorPane.topAnchor="391.0">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </TextArea>
-      <GridPane layoutX="1066.0" layoutY="481.0">
+      <GridPane layoutX="1115.0" layoutY="523.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Minimize DFA">
-               <font>
-                  <Font name="Elephant" size="10.0" />
-               </font>
-            </Button>
-            <Button id="FunctionButton" fx:id="resetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="73.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Reset" GridPane.columnIndex="1">
+            <Button id="FunctionButton" fx:id="resetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="73.0" style="-fx-background-color: white; -fx-background-radius: 5;" styleClass="FunctionButton" text="Reset">
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font>
             </Button>
          </children>
       </GridPane>
+      <ChoiceBox fx:id="chooseFa" layoutX="181.0" layoutY="58.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-radius: 5;" />
+      <Label layoutX="36.0" layoutY="63.0" text="Choose your FA">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
