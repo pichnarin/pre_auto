@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.management.MemoryUsage;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,40 +17,64 @@ import java.util.Set;
 public class FirstController {
 
     @FXML
-    private Label AlphabetLabel;
-
-    @FXML
     private Button ConstructNfaBtn;
-
-    @FXML
-    private Label FinalStateLabel;
-
-    @FXML
-    private MenuBar MenuBar;
 
     @FXML
     private Button MinimizeDfaBtn;
 
     @FXML
-    private Label StartStateLabel;
-
-    @FXML
-    private Label StateLabel;
-
-    @FXML
-    private Label StringLabel;
-
-    @FXML
     private Button SubmitDfaBtn;
 
     @FXML
-    private Label TransitionLabel;
+    private MenuItem aboutProgram;
+
+    @FXML
+    private ChoiceBox<String> chooseFa;
+
+    @FXML
+    private MenuItem closeFileMenu;
+
+    @FXML
+    private MenuItem closeHelpMenu;
+
+    @FXML
+    private MenuItem createNewFile;
+
+    @FXML
+    private ImageView faImageView;
+
+    @FXML
+    private Menu fileMenu;
+
+    @FXML
+    private Menu helpMenu;
+
+    @FXML
+    private GridPane imageGridPane;
+
+    @FXML
+    private MenuBar menuBar;
+
+    @FXML
+    private MenuItem openFile;
 
     @FXML
     private Button resetBtn;
 
     @FXML
+    private MenuItem saveFile;
+
+    @FXML
     private TextField txtAlphabet;
+
+    @FXML
+    private TextArea txtCheckFaResult;
+
+    @FXML
+    private TextField txtEpsilonS;
+
+    @FXML
+    private TextArea txtEpsilonT;
 
     @FXML
     private TextField txtFinalState;
@@ -69,31 +94,76 @@ public class FirstController {
     @FXML
     private TextArea txtTransition;
 
-    @FXML
-    private ImageView faImageView;
-
-    @FXML
-    private GridPane imageGridpane;
-
-    @FXML
-    private TextArea txtEpsilonT;
-
-    @FXML
-    private TextField txtEpsilonS;
-
-    @FXML
-    private TextArea txtCheckFaResult;
-
-    @FXML
-    private ChoiceBox<String> chooseFa;
 
     @FXML
     private void initialize() {
         initializeSubmitDfaBtn();
         initializeResetButton();
         initialChooseFa();
+        initializeNewFile();
+        initializeOpenFile();
+        initializeSaveFile();
+        initializeAboutProgram();
     }
 
+    //alert about the program
+    private void initializeAboutProgram() {
+        aboutProgram.setOnAction(_ -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setWidth(400);
+            alert.setHeight(300);
+            alert.setTitle("About Program");
+            alert.setHeaderText("Automaton Simulation");
+            alert.setContentText("This program is a simulation of a Deterministic Finite Automaton (DFA) and a Non-Deterministic Finite Automaton (NFA).");
+            alert.showAndWait();
+        });
+    }
+
+    //user can open the file that content the fa information
+    private void initializeOpenFile() {
+    }
+
+    //user can create a new file
+    private void initializeNewFile() {
+    }
+    
+    //user can save the file that content the fa information
+    private void initializeSaveFile() {
+        saveFile.setOnAction(_ -> {
+            Set<String> state;
+            Set<String> alphabet;
+            String startState;
+            Set<String> finalState;
+            Set<String> transition;
+            Set<String> initial_string;
+            Set<String> epsilonAlphabet;
+            Set<String> epsilonTransition;
+
+            // Save the FA information to a file
+            state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
+            alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
+            startState = txtStartState.getText();
+            finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
+            transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+            initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
+            epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
+            epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
+
+            // Validate the input
+            System.out.println(state);
+            System.out.println(alphabet);
+            System.out.println(startState);
+            System.out.println(finalState);
+            System.out.println(transition);
+            System.out.println(initial_string);
+            System.out.println(epsilonAlphabet);
+            System.out.println(epsilonTransition);
+
+        });
+    }
+
+
+    //user can choose the fa type
     private void initialChooseFa() {
         chooseFa.getItems().add("DFA");
         chooseFa.getItems().add("NFA");
@@ -108,7 +178,7 @@ public class FirstController {
         });
     }
 
-
+    //user can reset the fa information
     private void initializeResetButton() {
         resetBtn.setOnAction(_ -> {
             txtCheckFaResult.clear();
@@ -117,6 +187,7 @@ public class FirstController {
         });
     }
 
+    //user can submit the fa information
     private void initializeSubmitDfaBtn() {
         SubmitDfaBtn.setOnAction(_ -> {
             // Handle the user's input here
