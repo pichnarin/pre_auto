@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1505.0" style="-fx-border-radius: 10; -fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1505.0" style="-fx-border-radius: 10; -fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.FirstController">
    <children>
       <GridPane alignment="CENTER_LEFT" layoutX="14.0" layoutY="99.0" prefHeight="472.0" prefWidth="356.0" AnchorPane.topAnchor="99.0">
         <columnConstraints>
@@ -120,7 +121,7 @@
           <RowConstraints maxHeight="422.7304873005341" minHeight="10.0" prefHeight="103.90435056690046" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea id="OutputBox" fx:id="txtStrAR" editable="false" prefHeight="285.0" prefWidth="1603.0" promptText="The results" style="-fx-cursor: text;" styleClass="OutputBox">
+            <TextArea id="OutputBox" fx:id="txtStrAR" editable="false" prefHeight="285.0" prefWidth="1603.0" promptText="The results" style="-fx-cursor: text; -fx-font-family: Arial;" styleClass="OutputBox">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
@@ -145,7 +146,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <GridPane fx:id="imageGridPane" layoutX="841.0" layoutY="99.0" prefHeight="351.0" prefWidth="649.0" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="357.0" AnchorPane.leftAnchor="841.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="99.0">
+      <GridPane fx:id="imageGridPane" alignment="CENTER" layoutX="841.0" layoutY="99.0" prefHeight="350.0" prefWidth="649.0" style="-fx-background-color: white; -fx-background-radius: 5;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -153,7 +154,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fx:id="faImageView" fitHeight="327.0" fitWidth="650.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="faImageView" fitHeight="350.0" fitWidth="650.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
          </children>
       </GridPane>
       <GridPane layoutX="433.0" layoutY="99.0" prefHeight="255.0" prefWidth="354.0">
@@ -177,11 +181,6 @@
             </TextField>
          </children>
       </GridPane>
-      <TextArea fx:id="txtCheckFaResult" editable="false" layoutX="432.0" layoutY="391.0" prefHeight="59.0" prefWidth="356.0" promptText="Check FA" style="-fx-background-color: white; -fx-background-radius: 5;" AnchorPane.bottomAnchor="356.9652422022693" AnchorPane.leftAnchor="432.0" AnchorPane.rightAnchor="716.6609076677706" AnchorPane.topAnchor="391.0">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </TextArea>
       <GridPane layoutX="1115.0" layoutY="523.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -198,10 +197,18 @@
          </children>
       </GridPane>
       <ChoiceBox fx:id="chooseFa" layoutX="181.0" layoutY="58.0" prefWidth="150.0" style="-fx-cursor: pointer; -fx-background-color: white;" />
-      <Label layoutX="36.0" layoutY="63.0" text="Choose your FA">
+      <Label layoutX="36.0" layoutY="63.0" text="Choose your FA" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
+      <TextField id="InputBox" fx:id="txtCheckFaResult" editable="false" layoutX="432.0" layoutY="404.0" prefHeight="52.0" prefWidth="354.0" promptText="Check FA" style="-fx-cursor: text;" styleClass="InputBox">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </TextField>
    </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

@@ -23,6 +23,7 @@ public class PrimaryData {
             this.initial_string = initial_string;
         }
 
+        //class to check if the string is accepted or not
     public boolean isStringAccepted(String testString) {
         String currentState = startState;
         for (char c : testString.toCharArray()) {
@@ -42,9 +43,27 @@ public class PrimaryData {
         return finalState.contains(currentState);
     }
 
+    //class to generate dot script after the data get from user input
     public String generateDotScript() {
         StringBuilder dotScript = new StringBuilder("digraph G {\n");
+        // Add a title to the graph
+        dotScript.append("label=\"FA Graph\";\n");
+        // Set the title location to top
+        dotScript.append("labelloc=t;\n");
+        //set the direction of graph
         dotScript.append("rankdir=LR;\n");
+        //set size of graphviz image
+        dotScript.append("size=\"6.5,3.3\";\n");
+        //set dpi(dots per inch) of image
+        dotScript.append("dpi=100;\n");
+        //set ratio to fill to preserve aspect ratio
+        dotScript.append("ratio=\"fill\";\n");
+        //set page size equal to graph size
+        dotScript.append("page=\"6.5,3.3\";\n");
+        //center the drawing on the page
+        dotScript.append("center=true;\n");
+        //set the margin of the graph
+        dotScript.append("margin=\"0.1,0.1\";\n");
         // Add states to the DOT script
         for (String state : this.state) {
             dotScript.append(state).append(" [shape=circle];\n");
@@ -74,6 +93,7 @@ public class PrimaryData {
         return dotScript.toString();
     }
 
+    //class to generate the image of graph
     public void GenerateImage(String dotScript, String outputPath) throws IOException, InterruptedException {
         Path tempDotFile = Files.createTempFile("graph", ".dot");
         Files.writeString(tempDotFile, dotScript);

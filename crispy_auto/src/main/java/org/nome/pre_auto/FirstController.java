@@ -68,7 +68,7 @@ public class FirstController {
     private TextField txtAlphabet;
 
     @FXML
-    private TextArea txtCheckFaResult;
+    private TextField txtCheckFaResult;
 
     @FXML
     private TextField txtEpsilonS;
@@ -220,13 +220,14 @@ public class FirstController {
             //if the fa is dfa
             if (chooseFa.getValue().equals("DFA")){
 
-                txtCheckFaResult.setText("This fa is dfa");
+                txtCheckFaResult.setText("This FA is DFA");
 
                 // You can now use these values in your application
                 PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "dfa.png";
                 String dotScript = primaryData.generateDotScript();
+                System.out.println(dotScript);
                 try {
                     primaryData.GenerateImage(dotScript, outputPath);
                     Image image = new Image(new FileInputStream(outputPath));
@@ -255,7 +256,7 @@ public class FirstController {
                 alphabet.addAll(epsilonAlphabet);
 
                 txtCheckFaResult.clear();
-                txtCheckFaResult.setText("This fa is nfa");
+                txtCheckFaResult.setText("This FA is NFA");
 
                 //concat the dfa's transition and nfa's transition and dfa's alphabet and nfa's alphabet
                 Set<String> transitionNfa = new HashSet<>(transition);
