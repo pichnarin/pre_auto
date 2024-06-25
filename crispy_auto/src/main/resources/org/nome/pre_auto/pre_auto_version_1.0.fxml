@@ -34,7 +34,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <TextArea id="InputBox" fx:id="txtTransition" layoutY="5.0" prefHeight="183.0" prefWidth="354.0" promptText="Enter transitions" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextArea id="InputBox" fx:id="txtTransition" layoutY="5.0" prefHeight="183.0" prefWidth="354.0" promptText="Enter transitions (a-&gt;0-&gt;b, a-&gt;1-&gt;b,....)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -43,7 +43,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextField id="InputBox" fx:id="txtState" layoutY="3.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter state" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextField id="InputBox" fx:id="txtState" layoutY="3.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter state (a,b,c...)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -52,7 +52,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <TextField id="InputBox" fx:id="txtAlphabet" layoutY="-1.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter alphabet" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextField id="InputBox" fx:id="txtAlphabet" layoutY="-1.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter alphabet (0,1,2....)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -70,7 +70,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
-                  <TextField id="InputBox" fx:id="txtFinalState" prefHeight="52.0" prefWidth="354.0" promptText="Enter final state" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextField id="InputBox" fx:id="txtFinalState" prefHeight="52.0" prefWidth="354.0" promptText="Enter final state (a,b,c....)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -79,7 +79,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
-                  <TextField id="InputBox" fx:id="txtString" layoutY="-4.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter strings" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextField id="InputBox" fx:id="txtString" layoutY="-4.0" prefHeight="52.0" prefWidth="354.0" promptText="Enter strings (0,1,11,00,....)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -169,7 +169,7 @@
           <RowConstraints maxHeight="194.5043700589216" minHeight="10.0" prefHeight="194.5043700589216" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition" style="-fx-cursor: text;" GridPane.rowIndex="1">
+            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition (a-&gt; -&gt;a, a-&gt;e-&gt;b,...)" style="-fx-cursor: text;" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
