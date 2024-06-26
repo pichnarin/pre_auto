@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.management.MemoryUsage;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -94,6 +93,9 @@ public class FirstController {
     @FXML
     private TextArea txtTransition;
 
+    @FXML
+    private MenuItem errorHelper;
+
 
     @FXML
     private void initialize() {
@@ -104,6 +106,7 @@ public class FirstController {
         initializeOpenFile();
         initializeSaveFile();
         initializeAboutProgram();
+        initailizeErrorHelper();
     }
 
     //alert about the program
@@ -119,6 +122,10 @@ public class FirstController {
         });
     }
 
+    //user helper while user have any error after input the fa information
+    private void initailizeErrorHelper(){
+
+    }
     //user can open the file that content the fa information
     private void initializeOpenFile() {
     }
