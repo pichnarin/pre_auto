@@ -141,6 +141,7 @@
             <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
               <items>
                 <MenuItem fx:id="aboutProgram" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="errorHelper" mnemonicParsing="false" text="Error helper" />
                   <MenuItem fx:id="closeHelpMenu" mnemonicParsing="false" text="Close" />
               </items>
             </Menu>
