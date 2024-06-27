@@ -130,12 +130,16 @@ public class FirstController {
     private void initializeInstructionHelper(){
         instructionHelper.setOnAction(_->{
             Alert instruction = new Alert(Alert.AlertType.INFORMATION);
-            instruction.setWidth(500);
+            instruction.setWidth(400);
             instruction.setHeight(400);
             instruction.setTitle("Instruction");
             instruction.setHeaderText("How to use this automaton simulation program?");
-            instruction.setContentText("a. You need to choose the FA type either it is DFA or NFA." +
-                    "b. You need to input all the data in each textfield ");
+            instruction.setContentText("""
+                    a. You need to choose the FA type either it is DFA or NFA.\s
+                    b. You need to input all the data in each text field.\s
+                    c. Click on submit button to complete the simulation.\s
+                    """);
+            instruction.showAndWait();
         });
     }
 
