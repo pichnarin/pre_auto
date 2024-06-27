@@ -101,7 +101,7 @@ public class PrimaryData {
         Process process = pb.start();
         int exitCode = process.waitFor();
         if (exitCode != 0) {
-            throw new RuntimeException("Graphviz exited with error code " + exitCode);
+            throw new RuntimeException("Graphviz exited with error code %d".formatted(exitCode));
         }
     }
 }

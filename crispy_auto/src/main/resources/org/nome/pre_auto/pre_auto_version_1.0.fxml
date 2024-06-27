@@ -142,6 +142,7 @@
               <items>
                 <MenuItem fx:id="aboutProgram" mnemonicParsing="false" text="About" />
                   <MenuItem fx:id="errorHelper" mnemonicParsing="false" text="Error helper" />
+                  <MenuItem fx:id="instructionHelper" mnemonicParsing="false" text="How to use the program?" />
                   <MenuItem fx:id="closeHelpMenu" mnemonicParsing="false" text="Close" />
               </items>
             </Menu>

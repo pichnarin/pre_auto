@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.management.MemoryUsage;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -94,6 +93,12 @@ public class FirstController {
     @FXML
     private TextArea txtTransition;
 
+    @FXML
+    private MenuItem errorHelper;
+
+    @FXML
+    private MenuItem instructionHelper;
+
 
     @FXML
     private void initialize() {
@@ -104,6 +109,8 @@ public class FirstController {
         initializeOpenFile();
         initializeSaveFile();
         initializeAboutProgram();
+        initializeErrorHelper();
+        initializeInstructionHelper();
     }
 
     //alert about the program
@@ -116,6 +123,32 @@ public class FirstController {
             alert.setHeaderText("Automaton Simulation");
             alert.setContentText("This program is a simulation of a Deterministic Finite Automaton (DFA) and a Non-Deterministic Finite Automaton (NFA).");
             alert.showAndWait();
+        });
+    }
+
+    //user can read to know how to use the program
+    private void initializeInstructionHelper(){
+        instructionHelper.setOnAction(_->{
+            Alert instruction = new Alert(Alert.AlertType.INFORMATION);
+            instruction.setWidth(500);
+            instruction.setHeight(400);
+            instruction.setTitle("Instruction");
+            instruction.setHeaderText("How to use this automaton simulation program?");
+            instruction.setContentText("a. You need to choose the FA type either it is DFA or NFA." +
+                    "b. You need to input all the data in each textfield ");
+        });
+    }
+
+    //user can fix the program after finding a bug
+    private void initializeErrorHelper(){
+        errorHelper.setOnAction(_->{
+            Alert helperAlert = new Alert(Alert.AlertType.INFORMATION);
+            helperAlert.setWidth(400);
+            helperAlert.setHeight(300);
+            helperAlert.setTitle("Error Helper");
+            helperAlert.setHeaderText("Problem: If you submitting and the program doesn't show the fa graph.");
+            helperAlert.setContentText("Solution: Please download the graphviz from the official website here: https://graphviz.org/download/ and install it. after installed you need to copy address of the bin folder and paste it into the system environment variable.");
+            helperAlert.showAndWait();
         });
     }
 
@@ -245,7 +278,7 @@ public class FirstController {
                 int i = 0;
                 for (String testString : testStrings) {
                     boolean isAccepted = primaryData.isStringAccepted(testString);
-                    txtStrAR.appendText(i + " : " + "(" + testString + ")" + " = " + (isAccepted ? "Accepted" : "Rejected") + "\n");
+                    txtStrAR.appendText("%d : (%s) = %s\n".formatted(i, testString, isAccepted ? "Accepted" : "Rejected"));
                     i++;
                 }
 
@@ -283,7 +316,7 @@ public class FirstController {
                 int i = 0;
                 for (String testString : testStrings) {
                     boolean isAccepted = secondaryData.isStringAccepted(testString);
-                    txtStrAR.appendText(i + " : " + "(" + testString + ")" + " = " + (isAccepted ? "Accepted" : "Rejected") + "\n");
+                    txtStrAR.appendText("%d : (%s) = %s\n".formatted(i, testString, isAccepted ? "Accepted" : "Rejected"));
                     i++;
                 }
             }
