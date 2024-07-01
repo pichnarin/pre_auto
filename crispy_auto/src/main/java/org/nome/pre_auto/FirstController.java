@@ -19,9 +19,6 @@ public class FirstController {
     private Button ConstructNfaBtn;
 
     @FXML
-    private Button MinimizeDfaBtn;
-
-    @FXML
     private Button SubmitDfaBtn;
 
     @FXML
@@ -31,31 +28,7 @@ public class FirstController {
     private ChoiceBox<String> chooseFa;
 
     @FXML
-    private MenuItem closeFileMenu;
-
-    @FXML
-    private MenuItem closeHelpMenu;
-
-    @FXML
-    private MenuItem createNewFile;
-
-    @FXML
     private ImageView faImageView;
-
-    @FXML
-    private Menu fileMenu;
-
-    @FXML
-    private Menu helpMenu;
-
-    @FXML
-    private GridPane imageGridPane;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private MenuItem openFile;
 
     @FXML
     private Button resetBtn;
@@ -103,6 +76,7 @@ public class FirstController {
     @FXML
     private void initialize() {
         initializeSubmitDfaBtn();
+        initializeConDfaBtn();
         initializeResetButton();
         initialChooseFa();
         initializeNewFile();
@@ -111,6 +85,41 @@ public class FirstController {
         initializeAboutProgram();
         initializeErrorHelper();
         initializeInstructionHelper();
+    }
+
+    //construct an dfa that equivalent to nfa
+    private void initializeConDfaBtn() {
+        ConstructNfaBtn.setOnAction(_->{
+            if(chooseFa.getValue().equals("DFA")){
+                txtCheckFaResult.clear();
+                txtCheckFaResult.setText("This FA is DFA");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("This is not NFA");
+                alert.setContentText("""
+                        a. You cannot construct DFA from another DFA. \s
+                        b. Please choose NFA to construct DFA. \s
+                        """);
+                alert.showAndWait();
+            }
+            else if(chooseFa.getValue().equals("NFA with Epsilon")) {
+                txtCheckFaResult.clear();
+                txtCheckFaResult.setText("This FA is NFA");
+
+                Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
+                Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
+                String startState = txtStartState.getText();
+                Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
+                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+                Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
+                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
+
+                transition.addAll(epsilonTransition);
+                alphabet.addAll(epsilonAlphabet);
+
+                txtStrAR.clear();
+            }
+        });
     }
 
     //alert about the program
@@ -131,7 +140,7 @@ public class FirstController {
         instructionHelper.setOnAction(_->{
             Alert instruction = new Alert(Alert.AlertType.INFORMATION);
             instruction.setWidth(400);
-            instruction.setHeight(400);
+            instruction.setHeight(300);
             instruction.setTitle("Instruction");
             instruction.setHeaderText("How to use this automaton simulation program?");
             instruction.setContentText("""
@@ -167,35 +176,6 @@ public class FirstController {
     //user can save the file that content the fa information
     private void initializeSaveFile() {
         saveFile.setOnAction(_ -> {
-            Set<String> state;
-            Set<String> alphabet;
-            String startState;
-            Set<String> finalState;
-            Set<String> transition;
-            Set<String> initial_string;
-            Set<String> epsilonAlphabet;
-            Set<String> epsilonTransition;
-
-            // Save the FA information to a file
-            state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
-            alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
-            startState = txtStartState.getText();
-            finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
-            transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
-            initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
-            epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
-            epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
-
-            // Validate the input
-            System.out.println(state);
-            System.out.println(alphabet);
-            System.out.println(startState);
-            System.out.println(finalState);
-            System.out.println(transition);
-            System.out.println(initial_string);
-            System.out.println(epsilonAlphabet);
-            System.out.println(epsilonTransition);
-
         });
     }
 
@@ -203,14 +183,18 @@ public class FirstController {
     //user can choose the fa type
     private void initialChooseFa() {
         chooseFa.getItems().add("DFA");
-        chooseFa.getItems().add("NFA");
+        chooseFa.getItems().add("NFA with Epsilon");
+        chooseFa.getItems().add("NFA without Epsilon");
         chooseFa.setOnAction(_ -> {
             if (chooseFa.getValue().equals("DFA")) {
                 txtEpsilonS.setDisable(true);
                 txtEpsilonT.setDisable(true);
-            } else if (chooseFa.getValue().equals("NFA")) {
+            } else if (chooseFa.getValue().equals("NFA with Epsilon")) {
                 txtEpsilonS.setDisable(false);
                 txtEpsilonT.setDisable(false);
+            }else if(chooseFa.getValue().equals("NFA without Epsilon")){
+                txtEpsilonS.setDisable(true);
+                txtEpsilonT.setDisable(true);
             }
         });
     }
@@ -218,9 +202,19 @@ public class FirstController {
     //user can reset the fa information
     private void initializeResetButton() {
         resetBtn.setOnAction(_ -> {
+            //clear all the text field
+            txtState.clear();
+            txtAlphabet.clear();
+            txtStartState.clear();
+            txtFinalState.clear();
+            txtTransition.clear();
+            txtString.clear();
+            txtEpsilonS.clear();
+            txtEpsilonT.clear();
             txtCheckFaResult.clear();
             txtStrAR.clear();
             faImageView.setImage(null);
+
         });
     }
 
@@ -230,41 +224,38 @@ public class FirstController {
             // Handle the user's input here
 
             //the part of dfa is implemented here
-            Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
-            Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
-            String startState = txtStartState.getText();
-            Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
-            Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
-            Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
+            if (chooseFa.getValue().equals("DFA") || chooseFa.getValue().equals("NFA without Epsilon")){
 
-            //the part of nfa is implemented here
-            Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
-            Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
-
-
-            // Validate the input
-            if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty()) {
-                txtStrAR.setText("Please fill all the fields");
-                return;
-            } else if (!state.contains(startState)) {
-                txtStrAR.setText("Start state must be one of the states");
-                return;
-            } else if (!state.containsAll(finalState)) {
-                txtStrAR.setText("Final state must be from the states");
-                return;
-            }
-
-            //if the fa is dfa
-            if (chooseFa.getValue().equals("DFA")){
-
+                txtCheckFaResult.clear();
                 txtCheckFaResult.setText("This FA is DFA");
+
+                Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
+                Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
+                String startState = txtStartState.getText();
+                Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
+                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+                Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
+
+                System.out.printf("Alphabet: %s%n", alphabet);
+                System.out.printf("Transition: %s%n", transition);
+
+                // Validate the input
+                if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty()) {
+                    txtStrAR.setText("Please fill all the fields");
+                    return;
+                } else if (!state.contains(startState)) {
+                    txtStrAR.setText("Start state must be one of the states");
+                    return;
+                } else if (!state.containsAll(finalState)) {
+                    txtStrAR.setText("Final state must be from the states");
+                    return;
+                }
 
                 // You can now use these values in your application
                 PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "dfa.png";
                 String dotScript = primaryData.generateDotScript();
-                System.out.println(dotScript);
                 try {
                     primaryData.GenerateImage(dotScript, outputPath);
                     Image image = new Image(new FileInputStream(outputPath));
@@ -286,20 +277,41 @@ public class FirstController {
                     i++;
                 }
 
-                //if the fa is nfa
-            } else if (chooseFa.getValue().equals("NFA")){
+            }
+            //if the part of nfa implemented here
+            else if(chooseFa.getValue().equals("NFA with Epsilon")){
+                Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
+                Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
+                String startState = txtStartState.getText();
+                Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
+                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+                Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
+                Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
+                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
 
-                transition.addAll(epsilonTransition);
-                alphabet.addAll(epsilonAlphabet);
+                //validate the input
+                if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty() || txtEpsilonS.getText().isEmpty() || txtEpsilonT.getText().isEmpty()) {
+                    txtStrAR.setText("Please fill all the fields");
+                    return;
+                } else if (!state.contains(startState)) {
+                    txtStrAR.setText("Start state must be one of the states");
+                    return;
+                } else if (!state.containsAll(finalState)) {
+                    txtStrAR.setText("Final state must be from the states");
+                    return;
+                }
 
                 txtCheckFaResult.clear();
                 txtCheckFaResult.setText("This FA is NFA");
 
-                //concat the dfa's transition and nfa's transition and dfa's alphabet and nfa's alphabet
-                Set<String> transitionNfa = new HashSet<>(transition);
-                Set<String> alphabetNfa = new HashSet<>(alphabet);
+                transition.addAll(epsilonTransition);
+                alphabet.addAll(epsilonAlphabet);
 
-                SecondaryData secondaryData = new SecondaryData(state, alphabetNfa, startState, finalState, transitionNfa, initial_string);
+                System.out.printf("Alphabet: %s%n", alphabet);
+                System.out.printf("Transition: %s%n", transition);
+
+
+                PrimaryData secondaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "nfa.png";
                 String dotScript = secondaryData.generateDotScript();
@@ -323,6 +335,7 @@ public class FirstController {
                     txtStrAR.appendText("%d : (%s) = %s\n".formatted(i, testString, isAccepted ? "Accepted" : "Rejected"));
                     i++;
                 }
+
             }
         });
     }

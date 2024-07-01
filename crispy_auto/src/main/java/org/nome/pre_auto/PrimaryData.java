@@ -4,6 +4,7 @@ package org.nome.pre_auto;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.Set;
 
 public class PrimaryData {
@@ -23,13 +24,42 @@ public class PrimaryData {
             this.initial_string = initial_string;
         }
 
-        //class to check if the string is accepted or not
+    public Set<String> getState() {
+        return state;
+    }
+
+    public Set<String> getAlphabet() {
+        return alphabet;
+    }
+
+    public Set<String> getFinalState() {
+        return finalState;
+    }
+
+    public Set<String> getInitial_string() {
+        return initial_string;
+    }
+
+    public Set<String> getTransition() {
+        return transition;
+    }
+
+    public String getStartState() {
+        return startState;
+    }
+
+    //class to check if the string is accepted or not
     public boolean isStringAccepted(String testString) {
         String currentState = startState;
-        for (char c : testString.toCharArray()) {
+        for (char c : testString.toCharArray()) { //input string ab {split to [a,b]}
             boolean transitionFound = false;
             for (String t : transition) {
-                String[] parts = t.split("->");
+                String[] parts = t.split(" "); // Split transition example user input q0 a q1 -> [q0, a, q1]
+                if (parts.length < 3) {
+                    System.out.println(MessageFormat.format("Invalid transition format from primaryDataClass: {0}", t));
+                    continue;
+                }
+                //check the alphabet if is in the transition or not
                 if (parts[0].trim().equals(currentState) && parts[1].trim().equals(String.valueOf(c))) {
                     currentState = parts[2].trim();
                     transitionFound = true;
@@ -40,6 +70,7 @@ public class PrimaryData {
                 return false;
             }
         }
+        //if the currentState value is equal to final value it will return true
         return finalState.contains(currentState);
     }
 
@@ -79,7 +110,7 @@ public class PrimaryData {
 
         // Add transitions to the DOT script
         for (String t : this.transition) {
-            String[] parts = t.split("->");
+            String[] parts = t.split(" ");
             if (parts.length == 3) {
                 dotScript.append(parts[0].trim())
                         .append(" -> ")

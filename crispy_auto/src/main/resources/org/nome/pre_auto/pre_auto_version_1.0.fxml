@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -88,11 +89,11 @@
             </Pane>
          </children>
       </GridPane>
-      <GridPane layoutX="452.0" layoutY="516.0" prefHeight="45.0" prefWidth="314.0">
+      <GridPane layoutX="442.0" layoutY="515.0" prefHeight="45.0" prefWidth="354.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.52175910473784" minWidth="10.0" prefWidth="97.94778422537746" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="90.98265478700242" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="105.17387312717841" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="132.70435511338476" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.47832075093794" minWidth="0.0" prefWidth="108.49565189238996" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="115.5043268733757" minHeight="10.0" prefHeight="55.39998727376633" vgrow="SOMETIMES" />
@@ -102,11 +103,11 @@
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
-            <Button id="FunctionButton" fx:id="ConstructNfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="134.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Construct DFA" GridPane.columnIndex="2">
+            <Button id="FunctionButton" fx:id="ConstructNfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="134.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Construct DFA" GridPane.columnIndex="1">
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
-            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="91.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Minimize DFA" GridPane.columnIndex="1">
+            <Button id="FunctionButton" fx:id="MinimizeDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="98.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Minimize DFA" GridPane.columnIndex="2">
                <font>
                   <Font name="Elephant" size="10.0" />
                </font>
@@ -213,4 +214,7 @@
    <cursor>
       <Cursor fx:constant="HAND" />
    </cursor>
+   <effect>
+      <Glow />
+   </effect>
 </AnchorPane>
