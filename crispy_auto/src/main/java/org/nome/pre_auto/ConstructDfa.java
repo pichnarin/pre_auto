@@ -12,7 +12,9 @@ public class ConstructDfa {
     private final Set<String> eTransition;
 
     // Constructor
-    public ConstructDfa(Set<String> state, Set<String> alphabet, String startState, Set<String> finalState, Set<String> transition, String eAlphabet, Set<String> eTransition) {
+    public ConstructDfa(Set<String> state, Set<String> alphabet, String startState,
+                        Set<String> finalState, Set<String> transition,
+                        String eAlphabet, Set<String> eTransition) {
         this.state = state;
         this.alphabet = alphabet;
         this.startState = startState;
@@ -20,27 +22,6 @@ public class ConstructDfa {
         this.transition = transition;
         this.eAlphabet = eAlphabet;
         this.eTransition = eTransition;
-    }
-
-    // Getters
-    public Set<String> getState() {
-        return state;
-    }
-
-    public Set<String> getAlphabet() {
-        return alphabet;
-    }
-
-    public String getStartState() {
-        return startState;
-    }
-
-    public Set<String> getFinalState() {
-        return finalState;
-    }
-
-    public Set<String> getTransition() {
-        return transition;
     }
 
     // Compute Epsilon Closure for a single state
@@ -51,14 +32,14 @@ public class ConstructDfa {
         while (added) {
             added = false;
             for (String t : eTransition) {
-                String[] parts = t.split(" "); // Split on space
+                String[] parts = t.split("\\s+"); // Split on whitespace
                 if (parts.length < 3) {
                     System.out.println("Invalid transition format from primaryDataClass: " + t);
                     continue;
                 }
-                if (epsilonClosure.contains(parts[0].trim()) && parts[1].trim().equals(eAlphabet)) {
-                    if (!epsilonClosure.contains(parts[2].trim())) {
-                        epsilonClosure.add(parts[2].trim());
+                if (epsilonClosure.contains(parts[0]) && parts[1].equals(eAlphabet)) {
+                    if (!epsilonClosure.contains(parts[2])) {
+                        epsilonClosure.add(parts[2]);
                         added = true;
                     }
                 }
@@ -72,13 +53,13 @@ public class ConstructDfa {
         Set<String> move = new HashSet<>();
         for (String s : states) {
             for (String t : transition) {
-                String[] parts = t.split(" "); // Split on space
+                String[] parts = t.split("\\s+"); // Split on whitespace
                 if (parts.length < 3) {
                     System.out.println("Invalid transition format from primaryDataClass: " + t);
                     continue;
                 }
-                if (s.equals(parts[0].trim()) && parts[1].trim().equals(symbol)) {
-                    move.add(parts[2].trim());
+                if (s.equals(parts[0]) && parts[1].equals(symbol)) {
+                    move.add(parts[2]);
                 }
             }
         }
@@ -87,9 +68,7 @@ public class ConstructDfa {
 
     // Find DFA start state
     public Set<String> findDfaStartState() {
-        Set<String> startStateSet = new HashSet<>();
-        startStateSet.add(this.startState);
-        return computeEpsilonClosure(this.startState);
+        return computeEpsilonClosure(startState);
     }
 
     // Find DFA final states
@@ -137,7 +116,7 @@ public class ConstructDfa {
         return dfaTransitions;
     }
 
-    // Main method to construct the DFA
+    // Main method to construct the DFA (for testing)
     public void constructDfa() {
         Set<String> startState = findDfaStartState();
         Set<Set<String>> dfaFinalStates = findDfaFinalStates();

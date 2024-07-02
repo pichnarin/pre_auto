@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -86,6 +87,8 @@ public class FirstController {
         initializeErrorHelper();
         initializeInstructionHelper();
     }
+
+
 
     //construct an dfa that equivalent to nfa
     private void initializeConDfaBtn() {
@@ -176,6 +179,43 @@ public class FirstController {
     //user can save the file that content the fa information
     private void initializeSaveFile() {
         saveFile.setOnAction(_ -> {
+            // Get the filename from user or use a default name
+            String filename = "fa_information.txt";
+
+            // Get the FA information
+            String faType = chooseFa.getValue();
+            String states = txtState.getText();
+            String alphabet = txtAlphabet.getText();
+            String startState = txtStartState.getText();
+            String finalStates = txtFinalState.getText();
+            String transitions = txtTransition.getText();
+
+            // Prepare the content to write to the file
+            StringBuilder content = new StringBuilder();
+            content.append("FA Type: ").append(faType).append("\n\n");
+            content.append("States: ").append(states).append("\n");
+            content.append("Alphabet: ").append(alphabet).append("\n");
+            content.append("Start State: ").append(startState).append("\n");
+            content.append("Final States: ").append(finalStates).append("\n");
+            content.append("Transitions: ").append(transitions).append("\n");
+
+            // Write to file
+            try (FileWriter writer = new FileWriter(filename)) {
+                writer.write(content.toString());
+                writer.flush();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("File Saved");
+                alert.setHeaderText(null);
+                alert.setContentText("FA information saved to " + filename);
+                alert.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("File Save Error");
+                alert.setContentText("An error occurred while saving the file.");
+                alert.showAndWait();
+            }
         });
     }
 
@@ -338,5 +378,7 @@ public class FirstController {
 
             }
         });
+
     }
+
 }
