@@ -102,7 +102,7 @@ public class FirstController {
                         """);
                 alert.showAndWait();
             }
-            else if(chooseFa.getValue().equals("NFA with Epsilon")) {
+            else if(chooseFa.getValue().equals("NFA")) {
                 txtCheckFaResult.clear();
                 txtCheckFaResult.setText("This FA is NFA");
 
@@ -111,13 +111,16 @@ public class FirstController {
                 String startState = txtStartState.getText();
                 Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
                 Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
-                Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
                 Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
 
                 transition.addAll(epsilonTransition);
-                alphabet.addAll(epsilonAlphabet);
 
-                txtStrAR.clear();
+                ConstructDfa constructDfa = new ConstructDfa(state, alphabet, startState, finalState, transition, "e", epsilonTransition);
+                String getStartStart = constructDfa.findStartState().toString();
+                String getFinalState = constructDfa.findFinalState().toString();
+                String getTransitionFunction = constructDfa.findTransitionFunction().toString();
+
+                txtStrAR.setText("The DFA output after constructed:\n\nStart State: %s\n\nFinal State: %s\n\nTransition Function: %s".formatted(getStartStart, getFinalState, getTransitionFunction));
             }
         });
     }
@@ -183,18 +186,14 @@ public class FirstController {
     //user can choose the fa type
     private void initialChooseFa() {
         chooseFa.getItems().add("DFA");
-        chooseFa.getItems().add("NFA with Epsilon");
-        chooseFa.getItems().add("NFA without Epsilon");
+        chooseFa.getItems().add("NFA");
         chooseFa.setOnAction(_ -> {
             if (chooseFa.getValue().equals("DFA")) {
                 txtEpsilonS.setDisable(true);
                 txtEpsilonT.setDisable(true);
-            } else if (chooseFa.getValue().equals("NFA with Epsilon")) {
+            } else if (chooseFa.getValue().equals("NFA")) {
                 txtEpsilonS.setDisable(false);
                 txtEpsilonT.setDisable(false);
-            }else if(chooseFa.getValue().equals("NFA without Epsilon")){
-                txtEpsilonS.setDisable(true);
-                txtEpsilonT.setDisable(true);
             }
         });
     }
@@ -224,7 +223,7 @@ public class FirstController {
             // Handle the user's input here
 
             //the part of dfa is implemented here
-            if (chooseFa.getValue().equals("DFA") || chooseFa.getValue().equals("NFA without Epsilon")){
+            if (chooseFa.getValue().equals("DFA")){
 
                 txtCheckFaResult.clear();
                 txtCheckFaResult.setText("This FA is DFA");
@@ -279,7 +278,7 @@ public class FirstController {
 
             }
             //if the part of nfa implemented here
-            else if(chooseFa.getValue().equals("NFA with Epsilon")){
+            else if(chooseFa.getValue().equals("NFA")){
                 Set<String> state = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
                 Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
                 String startState = txtStartState.getText();

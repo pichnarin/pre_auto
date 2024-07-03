@@ -67,105 +67,96 @@ public class ConstructDfa {
         return epsilonClosure;
     }
 
-    // Compute Move
-    public Set<String> computeMove(Set<String> states, String symbol) {
-        Set<String> move = new HashSet<>();
-        for (String s : states) {
+    //Compute the transition function for the DFA from the start state
+    public Set<String> computeTransitionFunction(String state, String input) {
+        Set<String> transitionFunction = new HashSet<>();
+        Set<String> epsilonClosure = computeEpsilonClosure(state);
+        for (String s : epsilonClosure) {
             for (String t : transition) {
                 String[] parts = t.split(" "); // Split on space
                 if (parts.length < 3) {
                     System.out.println("Invalid transition format from primaryDataClass: " + t);
                     continue;
                 }
-                if (s.equals(parts[0].trim()) && parts[1].trim().equals(symbol)) {
-                    move.add(parts[2].trim());
+                if (parts[0].trim().equals(s) && parts[1].trim().equals(input)) {
+                    transitionFunction.add(parts[2].trim());
                 }
             }
         }
-        return move;
+        return transitionFunction;
     }
 
-    // Find DFA start state
-    public Set<String> findDfaStartState() {
-        Set<String> startStateSet = new HashSet<>();
-        startStateSet.add(this.startState);
-        return computeEpsilonClosure(this.startState);
+    //find the start state of the DFA
+    public Set<String> findStartState() {
+        return computeEpsilonClosure(startState);
     }
 
-    // Find DFA final states
-    public Set<Set<String>> findDfaFinalStates() {
-        Set<Set<String>> dfaFinalStates = new HashSet<>();
+    //find the final state of the DFA
+    public Set<String> findFinalState() {
+        Set<String> finalStates = new HashSet<>();
         for (String s : state) {
-            Set<String> closure = computeEpsilonClosure(s);
-            for (String c : closure) {
-                if (finalState.contains(c)) {
-                    dfaFinalStates.add(closure);
+            Set<String> epsilonClosure = computeEpsilonClosure(s);
+            for (String f : finalState) {
+                if (epsilonClosure.contains(f)) {
+                    finalStates.add(s);
                     break;
                 }
             }
         }
-        return dfaFinalStates;
+        return finalStates;
     }
 
-    // Compute DFA transitions
-    public Map<Set<String>, Map<String, Set<String>>> computeDfaTransitions() {
-        Map<Set<String>, Map<String, Set<String>>> dfaTransitions = new HashMap<>();
-        Set<Set<String>> visited = new HashSet<>();
+    //find the transition function of the DFA
+    public Set<String> findTransitionFunction() {
+        Set<String> transitionFunction = new HashSet<>();
+        Set<String> visited = new HashSet<>();
         Queue<Set<String>> queue = new LinkedList<>();
-        Set<String> startState = findDfaStartState();
-        queue.add(startState);
-        visited.add(startState);
-
+        queue.add(findStartState());
         while (!queue.isEmpty()) {
             Set<String> currentState = queue.poll();
-            dfaTransitions.putIfAbsent(currentState, new HashMap<>());
+            visited.add(currentState.toString());
             for (String a : alphabet) {
-                Set<String> moveResult = computeMove(currentState, a);
-                Set<String> epsilonClosureResult = new HashSet<>();
-                for (String state : moveResult) {
-                    epsilonClosureResult.addAll(computeEpsilonClosure(state));
+                Set<String> nextState = new HashSet<>();
+                for (String s : currentState) {
+                    nextState.addAll(computeTransitionFunction(s, a));
                 }
-                if (!epsilonClosureResult.isEmpty()) {
-                    dfaTransitions.get(currentState).put(a, epsilonClosureResult);
-                    if (!visited.contains(epsilonClosureResult)) {
-                        queue.add(epsilonClosureResult);
-                        visited.add(epsilonClosureResult);
+                if (!nextState.isEmpty()) {
+                    transitionFunction.add("%s %s %s".formatted(currentState.toString(), a, nextState.toString()));
+                    if (!visited.contains(nextState.toString())) {
+                        queue.add(nextState);
                     }
                 }
             }
         }
-        return dfaTransitions;
+        return transitionFunction;
     }
 
-    // Main method to construct the DFA
-    public void constructDfa() {
-        Set<String> startState = findDfaStartState();
-        Set<Set<String>> dfaFinalStates = findDfaFinalStates();
-        Map<Set<String>, Map<String, Set<String>>> dfaTransitions = computeDfaTransitions();
 
-        System.out.println("DFA Start State: " + startState);
-        System.out.println("DFA Final States: " + dfaFinalStates);
-        System.out.println("DFA Transitions: " + dfaTransitions);
-    }
 
     public static void main(String[] args) {
         // Example NFA input
-        Set<String> state = new HashSet<>(Arrays.asList("q0", "q1", "q2", "q3"));
+        Set<String> state = new HashSet<>(Arrays.asList("1", "2", "3", "4", "5"));
         Set<String> alphabet = new HashSet<>(Arrays.asList("a", "b"));
-        String startState = "q0";
-        Set<String> finalState = new HashSet<>(Collections.singletonList("q3"));
+        String startState = "1";
+        Set<String> finalState = new HashSet<>(Collections.singletonList("5"));
         Set<String> transition = new HashSet<>(Arrays.asList(
-                "q0 a q0",
-                "q0 b q0",
-                "q0 b q1",
-                "q1 a q2",
-                "q1 b q2",
-                "q2 a q3",
-                "q2 b q3"
+                "1 a 3",
+                "2 a 4",
+                "2 a 5",
+                "3 b 4",
+                "4 a 5",
+                "4 b 5"
         ));
-        Set<String> eTransition = new HashSet<>(Collections.singletonList("q1 e q2")); // Assuming eTransition is epsilon transitions
+        Set<String> eTransition = new HashSet<>(Collections.singletonList("1 e 2")); // Assuming eTransition is epsilon transitions
 
         ConstructDfa constructDfa = new ConstructDfa(state, alphabet, startState, finalState, transition, "e", eTransition);
-        constructDfa.constructDfa();
+
+        System.out.printf("Start State: %s%n", constructDfa.findStartState());
+        System.out.printf("Final State: %s%n", constructDfa.findFinalState());
+        System.out.printf("Transition Function: %s%n", constructDfa.findTransitionFunction());
+
+        //format this output
+        constructDfa.findTransitionFunction().forEach(System.out::println);
+
     }
 }
