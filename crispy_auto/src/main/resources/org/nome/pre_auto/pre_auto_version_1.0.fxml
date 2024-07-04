@@ -35,7 +35,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <TextArea id="InputBox" fx:id="txtTransition" layoutY="5.0" prefHeight="183.0" prefWidth="354.0" promptText="Enter transitions (a-&gt;0-&gt;b, a-&gt;1-&gt;b,....)" style="-fx-cursor: text;" styleClass="InputBox">
+                  <TextArea id="InputBox" fx:id="txtTransition" layoutY="5.0" prefHeight="183.0" prefWidth="354.0" promptText="Enter transitions (a 0 b, a 1 b,....)" style="-fx-cursor: text;" styleClass="InputBox">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
@@ -99,7 +99,7 @@
             <RowConstraints maxHeight="115.5043268733757" minHeight="10.0" prefHeight="55.39998727376633" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button id="FunctionButton" fx:id="SubmitDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Submit">
+            <Button id="FunctionButton" fx:id="SubmitDfaBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="100.0" style="-fx-cursor: pointer; -fx-background-color: white;" styleClass="FunctionButton" text="Design DFA">
                <font>
                   <Font name="Elephant" size="11.686956405639648" />
                </font></Button>
@@ -172,7 +172,7 @@
           <RowConstraints maxHeight="194.5043700589216" minHeight="10.0" prefHeight="194.5043700589216" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition (a-&gt; -&gt;a, a-&gt;e-&gt;b,...)" style="-fx-cursor: text;" GridPane.rowIndex="1">
+            <TextArea fx:id="txtEpsilonT" prefHeight="136.0" prefWidth="277.0" promptText="Enter epsilon(e) transition (a e b,...)" style="-fx-cursor: text;" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

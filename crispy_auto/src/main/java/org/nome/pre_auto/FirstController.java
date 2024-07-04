@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -72,6 +74,8 @@ public class FirstController {
     @FXML
     private MenuItem instructionHelper;
 
+    @FXML
+    private Button MinimizeDfaBtn;
 
     @FXML
     private void initialize() {
@@ -85,9 +89,59 @@ public class FirstController {
         initializeAboutProgram();
         initializeErrorHelper();
         initializeInstructionHelper();
+        initializeMinimizeDfaBtn();
     }
 
-    //construct an dfa that equivalent to nfa
+    //minimize the dfa controller
+    private void initializeMinimizeDfaBtn(){
+        MinimizeDfaBtn.setOnAction(_ -> {
+            if(chooseFa.getValue().equals("NFA")){
+                    txtCheckFaResult.clear();
+                    txtCheckFaResult.setText("This FA is NFA");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("This is not DFA");
+                    alert.setContentText("""
+                        a. The program cannot minimize DFA from NFA. \s
+                        b. Please choose DFA to minimize DFA. \s
+                        """);
+                    alert.showAndWait();
+            }else if(chooseFa.getValue().equals("DFA")){
+                txtCheckFaResult.clear();
+                txtCheckFaResult.setText("This FA is DFA");
+
+                    Set<String> states = new HashSet<>(Arrays.asList(txtState.getText().split(",")));
+                    Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
+                    String startState = txtStartState.getText();
+                    Set<String> finalStates = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
+                    Set<String> transitions = new HashSet<>(Arrays.asList(txtTransition.getText().split(",\\s*")));
+
+                    MinimizeDfa dfa = new MinimizeDfa(states, alphabet, startState, finalStates, transitions);
+                    MinimizeDfa minimizedDfa = dfa.minimize();
+
+                    String getDotScript = minimizedDfa.generateDotScript();
+                    String getOutput = "minimizedDfa.png";
+
+                    try {
+                        minimizedDfa.GenerateImage(getDotScript, getOutput);
+                        Image image = new Image(new FileInputStream(getOutput));
+                        faImageView.setPreserveRatio(true);
+                        faImageView.setImage(image);
+                        GridPane.setHalignment(faImageView, HPos.CENTER); // Center horizontally in the cell
+                        GridPane.setValignment(faImageView, VPos.CENTER); // Center vertically in the cell
+                    } catch (IOException | InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    //display the output of minimized dfa
+                    txtStrAR.setText("Minimized DFA:\n\nReachable state: %s\n\nEquivalent states: %s\n\nStates: %s\n\nAlphabet: %s\n\nStart State: %s\n\nFinal States: %s\n\nTransitions: %s".formatted(dfa.getReachableStates(), dfa.findEquivalentStates(), minimizedDfa.state, minimizedDfa.alphabet, minimizedDfa.startState, minimizedDfa.finalState, minimizedDfa.transitions));
+
+            }
+        });
+    }
+
+
+    //construct an dfa that equivalent to nfa controller
     private void initializeConDfaBtn() {
         ConstructNfaBtn.setOnAction(_->{
             if(chooseFa.getValue().equals("DFA")){
@@ -97,7 +151,7 @@ public class FirstController {
                 alert.setTitle("Error");
                 alert.setHeaderText("This is not NFA");
                 alert.setContentText("""
-                        a. You cannot construct DFA from another DFA. \s
+                        a. The program cannot construct DFA from another DFA. \s
                         b. Please choose NFA to construct DFA. \s
                         """);
                 alert.showAndWait();
@@ -111,7 +165,7 @@ public class FirstController {
                 String startState = txtStartState.getText();
                 Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
                 Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
-                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
+                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",\\s*")));
 
                 transition.addAll(epsilonTransition);
 
@@ -125,7 +179,7 @@ public class FirstController {
         });
     }
 
-    //alert about the program
+    //alert about the program controller
     private void initializeAboutProgram() {
         aboutProgram.setOnAction(_ -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -138,7 +192,7 @@ public class FirstController {
         });
     }
 
-    //user can read to know how to use the program
+    //user can read to know how to use the program controller
     private void initializeInstructionHelper(){
         instructionHelper.setOnAction(_->{
             Alert instruction = new Alert(Alert.AlertType.INFORMATION);
@@ -155,7 +209,7 @@ public class FirstController {
         });
     }
 
-    //user can fix the program after finding a bug
+    //user can fix the program after finding a bug controller
     private void initializeErrorHelper(){
         errorHelper.setOnAction(_->{
             Alert helperAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -183,7 +237,7 @@ public class FirstController {
     }
 
 
-    //user can choose the fa type
+    //user can choose the fa type controller
     private void initialChooseFa() {
         chooseFa.getItems().add("DFA");
         chooseFa.getItems().add("NFA");
@@ -198,7 +252,7 @@ public class FirstController {
         });
     }
 
-    //user can reset the fa information
+    //user can reset the fa information controller
     private void initializeResetButton() {
         resetBtn.setOnAction(_ -> {
             //clear all the text field
@@ -217,7 +271,7 @@ public class FirstController {
         });
     }
 
-    //user can submit the fa information
+    //user can submit the fa information controller
     private void initializeSubmitDfaBtn() {
         SubmitDfaBtn.setOnAction(_ -> {
             // Handle the user's input here
@@ -232,7 +286,7 @@ public class FirstController {
                 Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
                 String startState = txtStartState.getText();
                 Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
-                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",\\s*")));
                 Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
 
                 System.out.printf("Alphabet: %s%n", alphabet);
@@ -283,10 +337,10 @@ public class FirstController {
                 Set<String> alphabet = new HashSet<>(Arrays.asList(txtAlphabet.getText().split(",")));
                 String startState = txtStartState.getText();
                 Set<String> finalState = new HashSet<>(Arrays.asList(txtFinalState.getText().split(",")));
-                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",")));
+                Set<String> transition = new HashSet<>(Arrays.asList(txtTransition.getText().split(",\\s*")));
                 Set<String> initial_string = new HashSet<>(Arrays.asList(txtString.getText().split(",")));
                 Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(txtEpsilonS.getText().split(",")));
-                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",")));
+                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(txtEpsilonT.getText().split(",\\s*")));
 
                 //validate the input
                 if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty() || txtEpsilonS.getText().isEmpty() || txtEpsilonT.getText().isEmpty()) {

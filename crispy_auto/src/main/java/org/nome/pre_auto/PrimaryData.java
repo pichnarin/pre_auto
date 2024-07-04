@@ -8,7 +8,7 @@ import java.text.MessageFormat;
 import java.util.Set;
 
 public class PrimaryData {
-        private final Set<String> state;
+        private  Set<String> state;
         private Set<String> alphabet;
         private String startState;
         private Set<String> finalState;
@@ -24,29 +24,6 @@ public class PrimaryData {
             this.initial_string = initial_string;
         }
 
-    public Set<String> getState() {
-        return state;
-    }
-
-    public Set<String> getAlphabet() {
-        return alphabet;
-    }
-
-    public Set<String> getFinalState() {
-        return finalState;
-    }
-
-    public Set<String> getInitial_string() {
-        return initial_string;
-    }
-
-    public Set<String> getTransition() {
-        return transition;
-    }
-
-    public String getStartState() {
-        return startState;
-    }
 
     //class to check if the string is accepted or not
     public boolean isStringAccepted(String testString) {
@@ -78,7 +55,7 @@ public class PrimaryData {
     public String generateDotScript() {
         StringBuilder dotScript = new StringBuilder("digraph G {\n");
         // Add a title to the graph
-        dotScript.append("label=\"FA Graph\";\n");
+        dotScript.append("label=\"FA Graph(Red = StartState, Green = FinalState)\";\n");
         // Set the title location to top
         dotScript.append("labelloc=t;\n");
         //set the direction of graph
