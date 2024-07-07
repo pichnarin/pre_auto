@@ -11,9 +11,15 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 
-public class SwitchScene {
+public class OptionalScene {
     @FXML
-    private Button btnSwitch;
+    private Button optConDfaBtn;
+
+    @FXML
+    private Button optDesDfaBtn;
+
+    @FXML
+    private Button optMiniDfaBtn;
 
     private Stage stage;
 
@@ -21,11 +27,16 @@ public class SwitchScene {
     //switch scene forwards and backwards
     @FXML
     public void onBtnClick(ActionEvent event){
-        //switch to pre_auto_version_1.0.fxml
         try{
-            if(event.getSource() == btnSwitch){
+            if(event.getSource() == optDesDfaBtn) {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("optional.fxml")));
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("designFa.fxml")));
+            }else if(event.getSource() == optConDfaBtn) {
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("constructDfa.fxml")));
+            }else if(event.getSource() == optMiniDfaBtn) {
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("minimizeDfa.fxml")));
             }
 
             assert parent != null;
@@ -38,4 +49,10 @@ public class SwitchScene {
             System.out.println(e.getMessage());
         }
     }
+
+    @FXML
+    public void initialize(){
+
+    }
+
 }
