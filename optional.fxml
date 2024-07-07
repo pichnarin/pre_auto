@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.automata_sim.testController">
+   <children>
+      <CubicCurve cache="true" controlX1="-261.79998779296875" controlX2="259.08612060546875" controlY1="-43.79998779296875" controlY2="237.20001220703125" endX="432.69287109375" endY="3.39996337890625" focusTraversable="true" layoutX="517.0" layoutY="475.0" startX="-515.0" startY="174.0" stroke="BLACK" strokeWidth="2.0">
+         <fill>
+            <LinearGradient endX="0.7878787734291771" endY="1.0" startX="0.6893938960451068">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.5333333611488342" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </CubicCurve>
+      <Label layoutX="533.0" layoutY="613.0" text="© All rights reserved to : Automaton Group2 (CADT Generation 9)" />
+      <Line endX="142.19998168945312" endY="53.59999084472656" layoutX="-62.0" layoutY="-17.0" rotate="1.0" startX="138.0" startY="34.69999694824219" />
+      <Polyline fill="#7af736" layoutX="198.0" layoutY="47.0" points="-147.39996337890625, -16.199996948242188, 14.0, -24.400009155273438, 32.20001220703125, 45.28271484375, -136.34652709960938, 45.28271484375" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Polyline fill="#00ac0b" layoutX="207.0" layoutY="39.0" points="-147.39996337890625, -16.199996948242188, 119.79998779296875, -25.800003051757812, 137.4000244140625, 45.28271484375, -136.34652709960938, 45.28271484375" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label layoutX="90.0" layoutY="13.0" text="OPTIONAL !" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="60.0" />
+         </font>
+      </Label>
+      <Line endX="193.80043029785156" endY="27.03046989440918" layoutX="-61.0" layoutY="-15.0" rotate="5.0" startX="138.0" startY="34.69999694824219" />
+      <Line endX="46.79998779296875" layoutX="306.0" layoutY="92.0" startX="-37.20001220703125" />
+      <Line endX="96.0999755859375" endY="143.5" layoutX="259.0" layoutY="-52.0" rotate="7.0" startX="85.0810317993164" startY="113.86802673339844" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="104.0" layoutX="120.0" layoutY="219.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0" />
+      <Polyline fill="#e4e4e4" layoutX="62.0" layoutY="218.0" points="32.40000915527344, 9.399993896484375, 140.20001220703125, 9.399993896484375, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="104.0" layoutX="112.0" layoutY="213.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0">
+         <fill>
+            <LinearGradient endX="0.037878775235378304" endY="0.03030306100845337" startX="1.0" startY="0.9384469696969695">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9368420839309692" green="0.5933333039283752" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Polyline fill="#efa700" layoutX="53.0" layoutY="213.0" points="32.40000915527344, -5.5999908447265625, 137.20001220703125, -5.5999908447265625, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="104.0" layoutX="592.0" layoutY="218.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0" />
+      <Polyline fill="#e4e4e4" layoutX="534.0" layoutY="217.0" points="32.40000915527344, 9.399993896484375, 140.20001220703125, 9.399993896484375, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="104.0" layoutX="584.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0">
+         <fill>
+            <LinearGradient endX="0.15151515151515155" endY="0.11742425687385329" startX="0.7386363780859745" startY="0.5984848566127545">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.1666666716337204" blue="0.1666666716337204" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Polyline fill="#e74747" layoutX="525.0" layoutY="212.0" points="32.40000915527344, -5.5999908447265625, 137.20001220703125, -5.5999908447265625, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e4e4e4" height="104.0" layoutX="400.0" layoutY="380.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0" />
+      <Polyline fill="#e4e4e4" layoutX="342.0" layoutY="379.0" points="32.40000915527344, 9.399993896484375, 140.20001220703125, 9.399993896484375, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="104.0" layoutX="392.0" layoutY="374.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0">
+         <fill>
+            <LinearGradient endX="0.06818180373220731" endY="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8084390759468079" green="0.9300000071525574" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Polyline fill="#c7c700" layoutX="333.0" layoutY="374.0" points="32.40000915527344, -5.5999908447265625, 137.20001220703125, -5.5999908447265625, 177.20001220703125, 114.0, 32.40000915527344, 114.0" stroke="#08d91d" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Label layoutX="98.0" layoutY="205.0" text="01" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="100.0" />
+         </font>
+      </Label>
+      <Label layoutX="566.0" layoutY="206.0" text="02" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="100.0" />
+         </font>
+      </Label>
+      <Label layoutX="374.0" layoutY="367.0" text="03" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="100.0" />
+         </font>
+      </Label>
+      <Label layoutX="231.0" layoutY="220.0" text="Design" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="696.0" layoutY="224.0" text="Construct" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="508.0" layoutY="382.0" text="Minimize" textFill="WHITE">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="266.0" text="DFA" textFill="#00ac0b">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="795.0" layoutY="265.0" text="DFA" textFill="#00ac0b">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="603.0" layoutY="427.0" text="DFA" textFill="#00ac0b">
+         <font>
+            <Font name="Barlow Condensed SemiBold Italic" size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="772.0" layoutY="96.0" text="AUTOMATA SIMULATIONS">
+         <font>
+            <Font name="Barlow Condensed ExtraBold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Line endX="843.0000610351562" endY="-2.5999908447265625" layoutX="104.0" layoutY="120.0" startX="-100.0" strokeWidth="3.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.01666666753590107" green="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7018518447875977" green="0.7894737124443054" blue="0.6988304257392883" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+   </children>
+</AnchorPane>
