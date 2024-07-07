@@ -73,7 +73,7 @@
          <children>
             <Group layoutX="36.0" layoutY="12.0">
                <children>
-                  <ChoiceBox layoutX="164.0" prefHeight="28.0" prefWidth="119.0" style="-fx-cursor: pointer; -fx-background-color: #ffd280;" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="164.0" prefHeight="28.0" prefWidth="119.0" style="-fx-cursor: pointer; -fx-background-color: #ffd280;" />
                   <Label layoutY="4.0" text="Choose Finite Automata (FA)">
                      <font>
                         <Font name="Barlow Condensed Bold" size="15.0" />
@@ -245,10 +245,10 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <TextArea fx:id="outStringResult" layoutY="7.0" prefHeight="109.0" prefWidth="659.0" promptText="The results " style="-fx-cursor: text;" />
+                        <TextArea fx:id="outResult" editable="false" layoutY="7.0" prefHeight="109.0" prefWidth="659.0" promptText="The results " style="-fx-cursor: text;" />
                      </children>
                   </Pane>
-                  <TextField fx:id="outFaType" prefWidth="659.0" promptText="Check finite automata" style="-fx-background-color: white; -fx-cursor: text;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="outFaType" editable="false" prefWidth="659.0" promptText="Check finite automata" style="-fx-background-color: white; -fx-cursor: text;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="10.0" />
                      </font>

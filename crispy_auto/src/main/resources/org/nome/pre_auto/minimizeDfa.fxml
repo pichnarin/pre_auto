@@ -171,7 +171,7 @@
         </Pane>
         <Pane layoutX="454.0" layoutY="64.0" prefHeight="592.0" prefWidth="746.0" style="-fx-background-color: #feffc4;">
             <children>
-                <Button fx:id="resetBtn" layoutX="405.0" layoutY="541.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: red;" text="Reset">
+                <Button fx:id="resetBtn" layoutX="318.0" layoutY="535.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: red;" text="Reset">
                     <font>
                         <Font name="Barlow Condensed SemiBold" size="15.0" />
                     </font>
