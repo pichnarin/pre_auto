@@ -6,8 +6,8 @@ import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FirstController {
+
 
     @FXML
     private Button ConstructNfaBtn;
@@ -79,17 +80,7 @@ public class FirstController {
 
     @FXML
     private void initialize() {
-        initializeSubmitDfaBtn();
-        initializeConDfaBtn();
-        initializeResetButton();
-        initialChooseFa();
-        initializeNewFile();
-        initializeOpenFile();
-        initializeSaveFile();
-        initializeAboutProgram();
-        initializeErrorHelper();
-        initializeInstructionHelper();
-        initializeMinimizeDfaBtn();
+
     }
 
     //minimize the dfa controller
@@ -135,7 +126,6 @@ public class FirstController {
 
                     //display the output of minimized dfa
                     txtStrAR.setText("Minimized DFA:\n\nReachable state: %s\n\nEquivalent states: %s\n\nStates: %s\n\nAlphabet: %s\n\nStart State: %s\n\nFinal States: %s\n\nTransitions: %s".formatted(dfa.getReachableStates(), dfa.findEquivalentStates(), minimizedDfa.state, minimizedDfa.alphabet, minimizedDfa.startState, minimizedDfa.finalState, minimizedDfa.transitions));
-
             }
         });
     }
@@ -391,5 +381,8 @@ public class FirstController {
 
             }
         });
+    }
+
+    public void setOnAction(MouseEvent event) {
     }
 }

@@ -5,6 +5,7 @@ module org.nome.pre_auto {
     requires java.desktop;
     requires java.management;
 
-    opens org.nome.pre_auto to javafx.fxml;
     exports org.nome.pre_auto;
+    opens org.nome.pre_auto to javafx.fxml;
+
 }

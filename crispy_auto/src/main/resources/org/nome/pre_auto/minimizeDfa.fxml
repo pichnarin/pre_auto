@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="648.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nome.pre_auto.MinimizeDfaController">
+    <children>
+        <Line endX="-100.0" endY="-230.39999389648438" layoutX="551.0" layoutY="296.0" startX="-100.00003051757812" startY="357.878662109375" strokeWidth="3.0">
+            <stroke>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.890175461769104" green="0.9052631855010986" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.6736842393875122" green="0.6736842393875122" blue="0.6736842393875122" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </stroke>
+        </Line>
+        <Line endX="983.0" layoutX="108.0" layoutY="63.0" startX="-108.00001525878906" />
+        <Label layoutX="14.0" layoutY="7.0" text="MINIMIZE DETERMINISTIC FINITE AUTOMATA">
+            <font>
+                <Font name="Barlow Condensed ExtraBold" size="40.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="0.6325758009245901" endY="1.0" startX="0.6212121338555306" startY="0.3484848773840702">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.6631578803062439" green="0.6631578803062439" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.49473685026168823" green="0.4525925815105438" blue="0.4525925815105438" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Pane layoutX="1086.0" layoutY="47.0" prefHeight="19.0" prefWidth="111.0" style="-fx-background-color: #d4d4d4;">
+         <children>
+            <Button fx:id="backToOptBtn" layoutX="-1.0" layoutY="-5.0" mnemonicParsing="false" onAction="#btnOnClick" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: none;" text="BACK TO OPTIONAL">
+               <font>
+                  <Font name="Barlow Condensed ExtraBold Italic" size="14.0" />
+               </font>
+            </Button>
+         </children>
+        </Pane>
+        <Pane layoutX="-2.0" layoutY="65.0" prefHeight="590.0" prefWidth="450.0" style="-fx-background-color: #feffc4;">
+            <children>
+                <Label layoutX="121.0" layoutY="16.0" text="Fill Your Deterministic Finite Automata (DFA)">
+                    <font>
+                        <Font name="Barlow Condensed Bold" size="15.0" />
+                    </font>
+                </Label>
+                <GridPane layoutX="11.0" layoutY="53.0" prefHeight="316.0" prefWidth="431.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.20001220703125" minWidth="10.0" prefWidth="116.60001831054687" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="322.1999755859375" minWidth="10.0" prefWidth="314.3999816894531" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="38.200018310546874" minHeight="10.0" prefHeight="33.4000244140625" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="39.799975585937496" minHeight="10.0" prefHeight="32.59997558593751" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="48.600012207031256" minHeight="10.0" prefHeight="34.20002441406248" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="120.40001220703124" minHeight="10.0" prefHeight="117.19999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="74.39998779296877" minHeight="0.0" prefHeight="35.60000000000002" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="inAlphabet" prefHeight="26.0" prefWidth="308.0" promptText="Input alphabets (1,2,3,...)" style="-fx-cursor: text; -fx-background-color: white;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <Label prefHeight="21.0" prefWidth="50.0" text="States">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Alphabets" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Start states" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Final states" GridPane.rowIndex="3">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Transitions" GridPane.rowIndex="4">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label text="Strings" GridPane.rowIndex="5">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="inStartState" layoutX="104.0" layoutY="16.0" prefHeight="26.0" prefWidth="308.0" promptText="Input start state" style="-fx-cursor: text; -fx-background-color: white;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="inString" layoutX="104.0" layoutY="132.0" prefHeight="26.0" prefWidth="308.0" promptText="Input strings (0,1,11,...)" style="-fx-cursor: text; -fx-background-color: white;" styleClass="InputBox" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="inState" layoutX="128.0" layoutY="43.0" prefHeight="26.0" prefWidth="308.0" promptText="Input states (a,b,c,...)" style="-fx-cursor: text; -fx-background-color: white;" styleClass="InputBox" GridPane.columnIndex="1">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </TextField>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <children>
+                                <TextArea fx:id="inTransition" layoutX="1.0" prefHeight="121.0" prefWidth="314.0" promptText="Input transitions (a 0 b, a 1 b,...)" style="-fx-cursor: text;">
+                                    <opaqueInsets>
+                                        <Insets />
+                                    </opaqueInsets>
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </TextArea>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <children>
+                                <TextField fx:id="inFinalState" layoutY="7.0" prefHeight="26.0" prefWidth="314.0" promptText="Input final states (a,b,c,...)" style="-fx-cursor: text; -fx-background-color: white;" styleClass="InputBox">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </TextField>
+                            </children>
+                        </Pane>
+                    </children>
+                </GridPane>
+                <Button fx:id="submitBtn" layoutX="187.0" layoutY="438.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #37bf33;" text="Submit">
+                    <font>
+                        <Font name="Barlow Condensed SemiBold" size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </Pane>
+        <Pane layoutX="454.0" layoutY="64.0" prefHeight="592.0" prefWidth="746.0" style="-fx-background-color: #feffc4;">
+            <children>
+                <Button fx:id="resetBtn" layoutX="405.0" layoutY="541.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: red;" text="Reset">
+                    <font>
+                        <Font name="Barlow Condensed SemiBold" size="15.0" />
+                    </font>
+                </Button>
+                <GridPane layoutX="14.0" layoutY="14.0" prefHeight="521.0" prefWidth="712.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.79998779296875" minWidth="10.0" prefWidth="60.000024414062494" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.4000000000001" minWidth="10.0" prefWidth="665.5999755859375" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="356.79998168945315" minHeight="10.0" prefHeight="356.79998168945315" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="183.4" minHeight="10.0" prefHeight="109.06660156250001" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="183.4" minHeight="10.0" prefHeight="55.7333984375" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label prefHeight="21.0" prefWidth="50.0" text="Graph">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="362.0" prefHeight="21.0" prefWidth="50.0" text="Results" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Barlow Condensed Bold" size="15.0" />
+                            </font>
+                        </Label>
+                        <Pane prefHeight="351.0" prefWidth="651.0" style="-fx-background-color: white;" GridPane.columnIndex="1">
+                            <children>
+                                <ImageView fx:id="outGraph" fitHeight="350.0" fitWidth="650.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <TextArea fx:id="outResult" layoutY="7.0" prefHeight="109.0" prefWidth="659.0" promptText="The results " style="-fx-cursor: text;" />
+                            </children>
+                        </Pane>
+                    </children>
+                </GridPane>
+            </children>
+        </Pane>
+        <Label layoutX="451.0" layoutY="70.0" rotate="-40.5" text="Answer">
+            <font>
+                <Font name="Barlow Condensed Bold" size="15.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

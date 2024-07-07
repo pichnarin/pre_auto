@@ -22,27 +22,6 @@ public class ConstructDfa {
         this.eTransition = eTransition;
     }
 
-    // Getters
-    public Set<String> getState() {
-        return state;
-    }
-
-    public Set<String> getAlphabet() {
-        return alphabet;
-    }
-
-    public String getStartState() {
-        return startState;
-    }
-
-    public Set<String> getFinalState() {
-        return finalState;
-    }
-
-    public Set<String> getTransition() {
-        return transition;
-    }
-
     // Compute Epsilon Closure for a single state
     public Set<String> computeEpsilonClosure(String state) {
         Set<String> epsilonClosure = new HashSet<>();
@@ -53,7 +32,7 @@ public class ConstructDfa {
             for (String t : eTransition) {
                 String[] parts = t.split(" "); // Split on space
                 if (parts.length < 3) {
-                    System.out.println("Invalid transition format from primaryDataClass: " + t);
+                    System.out.printf("Invalid transition format from primaryDataClass: %s%n", t);
                     continue;
                 }
                 if (epsilonClosure.contains(parts[0].trim()) && parts[1].trim().equals(eAlphabet)) {
@@ -75,7 +54,7 @@ public class ConstructDfa {
             for (String t : transition) {
                 String[] parts = t.split(" "); // Split on space
                 if (parts.length < 3) {
-                    System.out.println("Invalid transition format from primaryDataClass: " + t);
+                    System.out.printf("Invalid transition format from primaryDataClass: %s%n", t);
                     continue;
                 }
                 if (parts[0].trim().equals(s) && parts[1].trim().equals(input)) {
@@ -133,7 +112,7 @@ public class ConstructDfa {
 
 
 
-    public static void main(String[] args) {
+    public static void main() {
         // Example NFA input
         Set<String> state = new HashSet<>(Arrays.asList("1", "2", "3", "4", "5"));
         Set<String> alphabet = new HashSet<>(Arrays.asList("a", "b"));

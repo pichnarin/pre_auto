@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.*;
-//I'm used chatgpt 👌👌👌👌👌
+
 
 public class MinimizeDfa {
     Set<String> state;
@@ -70,7 +70,7 @@ public class MinimizeDfa {
         return new MinimizeDfa(newStates, alphabet, newStartState, newFinalStates, newTransitions);
     }
 
-    Set<String> getReachableStates() {
+    public Set<String> getReachableStates() {
         Set<String> reachable = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
         queue.add(startState);
@@ -91,7 +91,7 @@ public class MinimizeDfa {
         return reachable;
     }
 
-    Map<String, String> findEquivalentStates() {
+    public Map<String, String> findEquivalentStates() {
         Map<String, String> equivalent = new HashMap<>();
         for (String s : state) {
             equivalent.put(s, s);
@@ -209,7 +209,7 @@ public class MinimizeDfa {
 
 
     //generate image of the minimized DFA
-    public void GenerateImage(String dotScript, String outputPath) throws IOException, InterruptedException, IOException {
+    public void GenerateImage(String dotScript, String outputPath) throws InterruptedException, IOException {
         String dotPath = "dot";
         String format = "-Tpng";
         String outputType = "-o";
