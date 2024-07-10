@@ -73,7 +73,7 @@
          <children>
             <Group layoutX="36.0" layoutY="12.0">
                <children>
-                  <ChoiceBox fx:id="choiceBox" layoutX="164.0" prefHeight="28.0" prefWidth="119.0" style="-fx-cursor: pointer; -fx-background-color: #ffd280;" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="164.0" prefHeight="28.0" prefWidth="155.0" style="-fx-cursor: pointer; -fx-background-color: #ffd280;" />
                   <Label layoutY="4.0" text="Choose Finite Automata (FA)">
                      <font>
                         <Font name="Barlow Condensed Bold" size="15.0" />

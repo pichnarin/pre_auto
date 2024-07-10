@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.*;
 
 
-public class MinimizeDfa {
+public class MinimizeDfa{
     Set<String> state;
     Set<String> alphabet;
     String startState;

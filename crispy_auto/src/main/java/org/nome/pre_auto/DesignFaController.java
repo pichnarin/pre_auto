@@ -106,7 +106,7 @@ public class DesignFaController {
     private void initializeSubmitBtn() {
         //the part of dfa is implemented here
         submitBtn.setOnAction(_ -> {
-            if (choiceBox.getValue().equals("DFA")){
+            if (choiceBox.getValue().equals("FA WITHOUT Epsilon")){
 
                 outFaType.clear();
                 outFaType.setText("This FA is DFA");
@@ -134,7 +134,7 @@ public class DesignFaController {
                 }
 
                 // You can now use these values in your application
-                PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
+                DesignFa primaryData = new DesignFa(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "dfa.png";
                 String dotScript = primaryData.generateDotScript();
@@ -161,7 +161,7 @@ public class DesignFaController {
 
             }
             //if the part of nfa implemented here
-            else if(choiceBox.getValue().equals("NFA")){
+            else if(choiceBox.getValue().equals("FA WITH Epsilon")){
                 Set<String> state = new HashSet<>(Arrays.asList(inState.getText().split(",")));
                 Set<String> alphabet = new HashSet<>(Arrays.asList(inAlphabet.getText().split(",")));
                 String startState = inStartState.getText();
@@ -172,7 +172,7 @@ public class DesignFaController {
                 Set<String> epsilonTransition = new HashSet<>(Arrays.asList(inETransition.getText().split(",\\s*")));
 
                 //validate the input
-                if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty() || inEState.getText().isEmpty() || inETransition.getText().isEmpty()) {
+                if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty() || epsilonAlphabet.isEmpty() || epsilonTransition.isEmpty()) {
                     outResult.setText("Please fill all the fields");
                     return;
                 } else if (!state.contains(startState)) {
@@ -193,7 +193,7 @@ public class DesignFaController {
                 System.out.printf("Transition: %s%n", transition);
 
 
-                PrimaryData secondaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
+                DesignFa secondaryData = new DesignFa(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "nfa.png";
                 String dotScript = secondaryData.generateDotScript();
@@ -241,24 +241,24 @@ public class DesignFaController {
     //initialize the choice box for user to pickup dfa or nfa
     public void initializeChoiceBox(){
         //initialize the choice box
-        choiceBox.getItems().add("DFA");
-        choiceBox.getItems().add("NFA");
+        choiceBox.getItems().add("FA WITH Epsilon");
+        choiceBox.getItems().add("FA WITHOUT Epsilon");
 
         //set the default value
-        choiceBox.setValue("DFA");
+        choiceBox.setValue("FA WITHOUT Epsilon");
 
-        if (choiceBox.getValue().equals("DFA")) {
+        if (choiceBox.getValue().equals("FA WITHOUT Epsilon")) {
             inEState.setDisable(true);
             inETransition.setDisable(true);
         }
         //the operation of choice box
         choiceBox.setOnAction(_ -> {
-            if(choiceBox.getValue().equals("DFA")){
-                inEState.setDisable(true);
-                inETransition.setDisable(true);
-            }else if(choiceBox.getValue().equals("NFA")){
+            if(choiceBox.getValue().equals("FA WITH Epsilon")){
                 inEState.setDisable(false);
                 inETransition.setDisable(false);
+            }else if(choiceBox.getValue().equals("FA WITHOUT Epsilon")){
+                inEState.setDisable(true);
+                inETransition.setDisable(true);
             }
         });
     }

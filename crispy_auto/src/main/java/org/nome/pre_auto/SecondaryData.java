@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Set;
 
 //ths class is a subclass od primaryData that will be used to store the data of NFA
-public class SecondaryData extends PrimaryData {
+public class SecondaryData extends DesignFa {
 
     public SecondaryData(Set<String> state, Set<String> alphabet, String startState, Set<String> finalState, Set<String> transition, Set<String> initial_string) {
         super(state, alphabet, startState, finalState, transition, initial_string);

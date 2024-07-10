@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.text.MessageFormat;
 import java.util.Set;
 
-public class PrimaryData {
+public class DesignFa {
         private  Set<String> state;
         private Set<String> alphabet;
         private String startState;
@@ -15,7 +15,7 @@ public class PrimaryData {
         private Set<String> transition;
         private Set<String> initial_string;
 
-        public PrimaryData(Set<String> state, Set<String> alphabet, String startState, Set<String> finalState, Set<String> transition, Set<String> initial_string) {
+        public DesignFa(Set<String> state, Set<String> alphabet, String startState, Set<String> finalState, Set<String> transition, Set<String> initial_string) {
             this.state = state;
             this.alphabet = alphabet;
             this.startState = startState;
@@ -23,7 +23,7 @@ public class PrimaryData {
             this.transition = transition;
             this.initial_string = initial_string;
         }
-
+        
 
     //class to check if the string is accepted or not
     public boolean isStringAccepted(String testString) {

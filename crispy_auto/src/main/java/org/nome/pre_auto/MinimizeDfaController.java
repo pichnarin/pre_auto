@@ -122,7 +122,7 @@ public class MinimizeDfaController {
                     return;
                 }
 
-                PrimaryData data = new PrimaryData(states, alphabet, startState, finalStates, transitions, strings);
+                DesignFa data = new DesignFa(states, alphabet, startState, finalStates, transitions, strings);
 
                 MinimizeDfa dfa = new MinimizeDfa(states, alphabet, startState, finalStates, transitions);
                 MinimizeDfa minimizedDfa = dfa.minimize();

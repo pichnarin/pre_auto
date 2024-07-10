@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -129,7 +128,7 @@ public class ConstructDfaController {
                 }
 
                 ConstructDfa constructDfa = new ConstructDfa(state, alphabet, startState, finalState, transition, "e", epsilonTransition);
-                PrimaryData data = new PrimaryData(state, alphabet, startState, finalState, transition, strings);
+                DesignFa data = new DesignFa(state, alphabet, startState, finalState, transition, strings);
 
                 // Test the input strings
                 String[] testStrings = inString.getText().split(",");

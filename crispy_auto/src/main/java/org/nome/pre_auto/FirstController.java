@@ -295,7 +295,7 @@ public class FirstController {
                 }
 
                 // You can now use these values in your application
-                PrimaryData primaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
+                DesignFa primaryData = new DesignFa(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "dfa.png";
                 String dotScript = primaryData.generateDotScript();
@@ -354,7 +354,7 @@ public class FirstController {
                 System.out.printf("Transition: %s%n", transition);
 
 
-                PrimaryData secondaryData = new PrimaryData(state, alphabet, startState, finalState, transition, initial_string);
+                DesignFa secondaryData = new DesignFa(state, alphabet, startState, finalState, transition, initial_string);
 
                 String outputPath = "nfa.png";
                 String dotScript = secondaryData.generateDotScript();
