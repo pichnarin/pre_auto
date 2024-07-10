@@ -23,7 +23,6 @@ public class DesignFa {
             this.transition = transition;
             this.initial_string = initial_string;
         }
-        
 
     //class to check if the string is accepted or not
     public boolean isStringAccepted(String testString) {

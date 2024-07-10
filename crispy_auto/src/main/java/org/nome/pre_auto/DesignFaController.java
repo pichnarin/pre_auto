@@ -27,9 +27,6 @@ import java.util.Set;
 public class DesignFaController {
 
     @FXML
-    private ChoiceBox<String> choiceBox;
-
-    @FXML
     private TextField inAlphabet;
 
     @FXML
@@ -98,7 +95,6 @@ public class DesignFaController {
 
     @FXML
     public void initialize(){
-        initializeChoiceBox();
         initializeSubmitBtn();
         initializeResetBtn();
     }
@@ -106,10 +102,6 @@ public class DesignFaController {
     private void initializeSubmitBtn() {
         //the part of dfa is implemented here
         submitBtn.setOnAction(_ -> {
-            if (choiceBox.getValue().equals("FA WITHOUT Epsilon")){
-
-                outFaType.clear();
-                outFaType.setText("This FA is DFA");
 
                 Set<String> state = new HashSet<>(Arrays.asList(inState.getText().split(",")));
                 Set<String> alphabet = new HashSet<>(Arrays.asList(inAlphabet.getText().split(",")));
@@ -118,8 +110,15 @@ public class DesignFaController {
                 Set<String> transition = new HashSet<>(Arrays.asList(inTransition.getText().split(",\\s*")));
                 Set<String> initial_string = new HashSet<>(Arrays.asList(inString.getText().split(",")));
 
+                String eAlphabet = inEState.getText();
+                Set<String> eTransition = new HashSet<>(Arrays.asList(inETransition.getText().split(",\\s*")));
+
+                transition.addAll(eTransition);
+                alphabet.add(eAlphabet);
+
                 System.out.printf("Alphabet: %s%n", alphabet);
                 System.out.printf("Transition: %s%n", transition);
+
 
                 // Validate the input
                 if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty()) {
@@ -131,6 +130,13 @@ public class DesignFaController {
                 } else if (!state.containsAll(finalState)) {
                     outResult.setText("Final state must be from the states");
                     return;
+                }
+
+                //check the type of fa
+                if (alphabet.contains("e")) {
+                    outFaType.setText("NFA");
+                } else {
+                    outFaType.setText("DFA");
                 }
 
                 // You can now use these values in your application
@@ -158,67 +164,6 @@ public class DesignFaController {
                     outResult.appendText("%d : (%s) = %s\n".formatted(i, testString, isAccepted ? "Accepted" : "Rejected"));
                     i++;
                 }
-
-            }
-            //if the part of nfa implemented here
-            else if(choiceBox.getValue().equals("FA WITH Epsilon")){
-                Set<String> state = new HashSet<>(Arrays.asList(inState.getText().split(",")));
-                Set<String> alphabet = new HashSet<>(Arrays.asList(inAlphabet.getText().split(",")));
-                String startState = inStartState.getText();
-                Set<String> finalState = new HashSet<>(Arrays.asList(inFinalState.getText().split(",")));
-                Set<String> transition = new HashSet<>(Arrays.asList(inTransition.getText().split(",\\s*")));
-                Set<String> initial_string = new HashSet<>(Arrays.asList(inString.getText().split(",")));
-                Set<String> epsilonAlphabet = new HashSet<>(Arrays.asList(inEState.getText().split(",")));
-                Set<String> epsilonTransition = new HashSet<>(Arrays.asList(inETransition.getText().split(",\\s*")));
-
-                //validate the input
-                if (state.isEmpty() || alphabet.isEmpty() || startState.isEmpty() || finalState.isEmpty() || transition.isEmpty() || initial_string.isEmpty() || epsilonAlphabet.isEmpty() || epsilonTransition.isEmpty()) {
-                    outResult.setText("Please fill all the fields");
-                    return;
-                } else if (!state.contains(startState)) {
-                    outResult.setText("Start state must be one of the states");
-                    return;
-                } else if (!state.containsAll(finalState)) {
-                    outResult.setText("Final state must be from the states");
-                    return;
-                }
-
-                outFaType.clear();
-                outFaType.setText("This FA is NFA");
-
-                transition.addAll(epsilonTransition);
-                alphabet.addAll(epsilonAlphabet);
-
-                System.out.printf("Alphabet: %s%n", alphabet);
-                System.out.printf("Transition: %s%n", transition);
-
-
-                DesignFa secondaryData = new DesignFa(state, alphabet, startState, finalState, transition, initial_string);
-
-                String outputPath = "nfa.png";
-                String dotScript = secondaryData.generateDotScript();
-                try {
-                    secondaryData.GenerateImage(dotScript, outputPath);
-                    Image image = new Image(new FileInputStream(outputPath));
-                    outGraph.setPreserveRatio(true);
-                    outGraph.setImage(image);
-                    GridPane.setHalignment(outGraph, HPos.CENTER); // Center horizontally in the cell
-                    GridPane.setValignment(outGraph, VPos.CENTER); // Center vertically in the cell
-                } catch (IOException | InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
-                //test the input strings
-                String[] testStrings = inString.getText().split(",");
-                outResult.clear(); // Clear previous results
-                int i = 0;
-                for (String testString : testStrings) {
-                    boolean isAccepted = secondaryData.isStringAccepted(testString);
-                    outResult.appendText("%d : (%s) = %s\n".formatted(i, testString, isAccepted ? "Accepted" : "Rejected"));
-                    i++;
-                }
-
-            }
         });
     }
 
@@ -235,31 +180,6 @@ public class DesignFaController {
             outResult.clear();
             outFaType.clear();
             outGraph.setImage(null);
-        });
-    }
-
-    //initialize the choice box for user to pickup dfa or nfa
-    public void initializeChoiceBox(){
-        //initialize the choice box
-        choiceBox.getItems().add("FA WITH Epsilon");
-        choiceBox.getItems().add("FA WITHOUT Epsilon");
-
-        //set the default value
-        choiceBox.setValue("FA WITHOUT Epsilon");
-
-        if (choiceBox.getValue().equals("FA WITHOUT Epsilon")) {
-            inEState.setDisable(true);
-            inETransition.setDisable(true);
-        }
-        //the operation of choice box
-        choiceBox.setOnAction(_ -> {
-            if(choiceBox.getValue().equals("FA WITH Epsilon")){
-                inEState.setDisable(false);
-                inETransition.setDisable(false);
-            }else if(choiceBox.getValue().equals("FA WITHOUT Epsilon")){
-                inEState.setDisable(true);
-                inETransition.setDisable(true);
-            }
         });
     }
 }

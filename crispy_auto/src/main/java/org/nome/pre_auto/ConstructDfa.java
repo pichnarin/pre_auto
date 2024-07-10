@@ -22,7 +22,7 @@ public class ConstructDfa {
         this.eTransition = eTransition;
     }
 
-    // Compute Epsilon Closure for a single state
+    // Compute Epsilon Closure for a start state
     public Set<String> computeEpsilonClosure(String state) {
         Set<String> epsilonClosure = new HashSet<>();
         epsilonClosure.add(state);
